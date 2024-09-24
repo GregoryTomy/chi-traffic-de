@@ -1,0 +1,112 @@
+Table Dim_DateTime {
+  DateTime_Key int [pk, increment] // Primary Key (Created)
+  Crash_Date timestamp // From CRASH_DATE
+  Day int // Extracted from CRASH_DATE
+  Month int // Extracted from CRASH_DATE
+  Year int // Extracted from CRASH_DATE
+  Day_of_Week int // From CRASH_DAY_OF_WEEK
+  Is_Weekend boolean // Created from Day_of_Week
+  Hour int // From CRASH_HOUR
+  Minute int // Extracted from CRASH_DATE
+  Time_of_Day varchar(20) // Created (e.g., Morning, Afternoon)
+}
+
+Table Dim_Location {
+  Location_Key int [pk, increment] // Primary Key (Created)
+  Latitude decimal(9,6) // From LATITUDE
+  Longitude decimal(9,6) // From LONGITUDE
+  Street_Name varchar(100) // From STREET_NAME
+  Street_Number int // From STREET_NO
+  Intersection_Flag boolean // From INTERSECTION_RELATED_I
+  Beat_of_Occurrence int // From BEAT_OF_OCCURRENCE
+  Street_Direction varchar(2) // From STREET_DIRECTION
+}
+
+Table Dim_Weather {
+  Weather_Key int [pk, increment] // Primary Key (Created)
+  Weather_Condition varchar(50) // From WEATHER_CONDITION
+  Lighting_Condition varchar(50) // From LIGHTING_CONDITION
+  Road_Surface_Condition varchar(50) // From ROADWAY_SURFACE_COND
+}
+
+Table Dim_Cause {
+  Cause_Key int [pk, increment] // Primary Key (Created)
+  Primary_Cause varchar(100) // From PRIM_CONTRIBUTORY_CAUSE
+  Secondary_Cause varchar(100) // From SEC_CONTRIBUTORY_CAUSE
+}
+
+Table Dim_Crash_Type {
+  Crash_Type_Key int [pk, increment] // Primary Key (Created)
+  First_Crash_Type varchar(100) // From FIRST_CRASH_TYPE
+  Crash_Severity varchar(50) // From CRASH_TYPE
+}
+
+Table Dim_Work_Zone {
+  Work_Zone_Key int [pk, increment] // Primary Key (Created)
+  Work_Zone_Flag boolean // From WORK_ZONE_I
+  Work_Zone_Type varchar(50) // From WORK_ZONE_TYPE
+  Workers_Present_Flag boolean // From WORKERS_PRESENT_I
+}
+
+Table Dim_Vehicle {
+  Vehicle_Dim_Key int [pk, increment] // Primary Key (Created)
+  Make varchar(50) // From MAKE
+  Model varchar(50) // From MODEL
+  Vehicle_Year int // From VEHICLE_YEAR
+  Vehicle_Type varchar(50) // From VEHICLE_TYPE
+  Vehicle_Use varchar(50) // From VEHICLE_USE
+}
+
+Table Dim_Person {
+  Person_Dim_Key int [pk, increment] // Primary Key (Created)
+  Person_Type varchar(20) // From PERSON_TYPE
+  Age int // From AGE
+  Sex varchar(10) // From SEX
+  Driver_Action varchar(100) // From DRIVER_ACTION
+  Physical_Condition varchar(50) // From PHYSICAL_CONDITION
+  Cell_Phone_Use boolean // From CELL_PHONE_USE
+}
+
+Table Fact_Crashes {
+  Crash_Key int [pk, increment] // Primary Key (Created)
+  Crash_Record_ID varchar(20) // From CRASH_RECORD_ID
+  DateTime_Key int [not null, ref: > Dim_DateTime.DateTime_Key]
+  Location_Key int [not null, ref: > Dim_Location.Location_Key]
+  Weather_Key int [ref: > Dim_Weather.Weather_Key]
+  Cause_Key int [ref: > Dim_Cause.Cause_Key]
+  Crash_Type_Key int [ref: > Dim_Crash_Type.Crash_Type_Key]
+  Work_Zone_Key int [ref: > Dim_Work_Zone.Work_Zone_Key]
+  Num_Units int // From NUM_UNITS
+  Injuries_Total int // From INJURIES_TOTAL
+  Injuries_Fatal int // From INJURIES_FATAL
+  Injuries_Incapacitating int // From INJURIES_INCAPACITATING
+  Injuries_Non_Incapacitating int // From INJURIES_NON_INCAPACITATING
+  Injuries_Reported_Not_Evident int // From INJURIES_REPORTED_NOT_EVIDENT
+  Injuries_No_Indication int // From INJURIES_NO_INDICATION
+  Injuries_Unknown int // From INJURIES_UNKNOWN
+  Most_Severe_Injury varchar(50) // From MOST_SEVERE_INJURY
+  Posted_Speed_Limit int // From POSTED_SPEED_LIMIT
+  Hit_and_Run_Flag boolean // From HIT_AND_RUN_I
+  Intersection_Related_Flag boolean // From INTERSECTION_RELATED_I
+}
+
+Table Fact_Vehicle {
+  Vehicle_Key int [pk, increment] // Primary Key (Created)
+  Crash_Key int [not null, ref: > Fact_Crashes.Crash_Key]
+  Vehicle_Dim_Key int [ref: > Dim_Vehicle.Vehicle_Dim_Key]
+  Driver_Key int [ref: > Dim_Person.Person_Dim_Key]
+  Exceed_Speed_Limit_Flag boolean // From EXCEED_SPEED_LIMIT_I
+  Unit_No int // From UNIT_NO
+  Unit_Type varchar(20) // From UNIT_TYPE
+}
+
+Table Fact_Person {
+  Person_Key int [pk, increment] // Primary Key (Created)
+  Crash_Key int [not null, ref: > Fact_Crashes.Crash_Key]
+  Vehicle_Key int [ref: > Fact_Vehicle.Vehicle_Key]
+  Person_Dim_Key int [ref: > Dim_Person.Person_Dim_Key]
+  Injury_Severity varchar(50) // From INJURY_CLASSIFICATION
+  BAC_Result_Value decimal(5,2) // From BAC_RESULT VALUE
+  BAC_Result varchar(20) // From BAC_RESULT
+  Cell_Phone_Use boolean // From CELL_PHONE_USE
+}
