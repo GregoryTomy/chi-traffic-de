@@ -15,12 +15,14 @@ BUCKET = "chi-traffic-de-bucket"
 
 default_args = {"owner": "duncanh", "depends_on_past": False, "retries": 1}
 # BigQuery Variables
-BQ_DATASET = 'chi_traffic_dataset'
-BQ_TABLE_CRASH = "crash_table"
-BQ_TABLE_PEOPLE = "people_table"
-BQ_TABLE_VEHICLE = "vehicle_table"
+BQ_DATASET = 'raw_data'
+BQ_TABLE_CRASH = "crash"
+BQ_TABLE_PEOPLE = "people"
+BQ_TABLE_VEHICLE = "vehicle"
 
 default_args = {"owner": "duncanh", "depends_on_past": False, "retries": 1}
+
+date_today = dt.datetime.today().strftime('%Y%m%d')
 
 with DAG(
     "export_date_from_GCS_to_GCP",
@@ -38,8 +40,8 @@ with DAG(
     load_crash_data_to_bq = GCSToBigQueryOperator(
         task_id = "load_crash_data_to_bq",
         bucket=BUCKET,
-        source_objects=[f"traffic_data/crash/chi_traffic_crash_{dt.datetime.today().strftime('%Y%m%d')}.parquet"],
-        destination_project_dataset_table =  f"{BQ_DATASET}.{BQ_TABLE_CRASH}",
+        source_objects=[f"traffic_data/crash/chi_traffic_crash_{date_today}.parquet"],
+        destination_project_dataset_table =  f"{BQ_DATASET}.{BQ_TABLE_CRASH}_{date_today}",
         source_format="PARQUET",
         write_disposition="WRITE_TRUNCATE", #* replaces entire contents of the destination table
         #TODO: Change to append when modifying data ingestion to daily
@@ -49,12 +51,12 @@ with DAG(
     load_people_data_to_bq = GCSToBigQueryOperator(
         task_id = "load_people_data_to_bq",
         bucket=BUCKET,
-        source_objects=[f"traffic_data/people/chi_traffic_people_{dt.datetime.today().strftime('%Y%m%d')}.parquet"],
-        destination_project_dataset_table =  f"{BQ_DATASET}.{BQ_TABLE_PEOPLE}",
+        source_objects=[f"traffic_data/people/chi_traffic_people_{date_today}.parquet"],
+        destination_project_dataset_table =  f"{BQ_DATASET}.{BQ_TABLE_PEOPLE}_{date_today}",
         source_format="PARQUET",
         write_disposition="WRITE_TRUNCATE", #* replaces entire contents of the destination table
         #TODO: Change to append when modifying data ingestion to daily
-        #! Had an issue with an unknown column :@computed_region_qgnn_b9vv.
+        # FIXED. Had an issue with an unknown column :@computed_region_qgnn_b9vv.
         ignore_unknown_values=True,
         autodetect=True,
     )
@@ -62,8 +64,8 @@ with DAG(
     load_vehicle_data_to_bq = GCSToBigQueryOperator(
         task_id = "load_vehicle_data_to_bq",
         bucket=BUCKET,
-        source_objects=[f"traffic_data/vehicle/chi_traffic_vehicle_{dt.datetime.today().strftime('%Y%m%d')}.parquet"],
-        destination_project_dataset_table =  f"{BQ_DATASET}.{BQ_TABLE_VEHICLE}",
+        source_objects=[f"traffic_data/vehicle/chi_traffic_vehicle_{date_today}.parquet"],
+        destination_project_dataset_table =  f"{BQ_DATASET}.{BQ_TABLE_VEHICLE}_{date_today}",
         source_format="PARQUET",
         write_disposition="WRITE_TRUNCATE", #* replaces entire contents of the destination table
         #TODO: Change to append when modifying data ingestion to daily
