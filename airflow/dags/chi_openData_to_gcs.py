@@ -14,9 +14,9 @@ from airflow.utils.dates import days_ago
 from airflow.providers.google.cloud.transfers.local_to_gcs import (
     LocalFilesystemToGCSOperator,
 )
-
 from google.cloud import storage
 
+# GCS Variables
 BUCKET = "chi-traffic-de-bucket"
 
 TRAFFIC_INJURY_CRASHES_URL = (
@@ -26,7 +26,7 @@ TRAFFIC_INJURY_VEHICLE_URL = (
     "https://data.cityofchicago.org/resource/68nd-jvt3.csv?$limit=2000000"
 )
 TRAFFIC_INJURY_PERSON_URL = (
-    "https://data.sfgov.org/resource/nwes-mmgh.csv?$limit=2000000"
+    "https://data.cityofchicago.org/resource/u6pd-qa9d.csv?$limit=2000000"
 )
 
 
@@ -68,7 +68,7 @@ with DAG(
         provide_context=True,
         op_kwargs={
             "api_url": TRAFFIC_INJURY_CRASHES_URL,
-            "tmp_file_name": f"CHI_Traffic_Crashes_{dt.datetime.today().strftime('%Y%m%d')}",
+            "tmp_file_name": f"chi_traffic_crashes_{dt.datetime.today().strftime('%Y%m%d')}",
         },
     )
 
@@ -78,7 +78,7 @@ with DAG(
         provide_context=True,
         op_kwargs={
             "api_url": TRAFFIC_INJURY_PERSON_URL,
-            "tmp_file_name": f"CHI_Traffic_People_{dt.datetime.today().strftime('%Y%m%d')}",
+            "tmp_file_name": f"chi_traffic_people_{dt.datetime.today().strftime('%Y%m%d')}",
         },
     )
 
@@ -88,7 +88,7 @@ with DAG(
         provide_context=True,
         op_kwargs={
             "api_url": TRAFFIC_INJURY_VEHICLE_URL,
-            "tmp_file_name": f"CHI_Traffic_Vehicle_{dt.datetime.today().strftime('%Y%m%d')}",
+            "tmp_file_name": f"chi_traffic_vehicle_{dt.datetime.today().strftime('%Y%m%d')}",
         },
     )
 
@@ -117,21 +117,21 @@ with DAG(
     upload_parquet_crash = LocalFilesystemToGCSOperator(
         task_id="upload_crash_parquet_to_gcs",
         src="{{ti.xcom_pull(task_ids='format_to_parquet_crash')}}",
-        dst=f"traffic_data/crash/CHI_Traffic_Crash_{dt.datetime.today().strftime('%Y%m%d')}.parquet",
+        dst=f"traffic_data/crash/chi_traffic_crash_{dt.datetime.today().strftime('%Y%m%d')}.parquet",
         bucket=BUCKET,
     )
 
     upload_parquet_people = LocalFilesystemToGCSOperator(
         task_id="upload_people_parquet_to_gcs",
         src="{{ti.xcom_pull(task_ids='format_to_parquet_people')}}",
-        dst=f"traffic_data/people/CHI_Traffic_people_{dt.datetime.today().strftime('%Y%m%d')}.parquet",
+        dst=f"traffic_data/people/chi_traffic_people_{dt.datetime.today().strftime('%Y%m%d')}.parquet",
         bucket=BUCKET,
     )
 
     upload_parquet_vehicle = LocalFilesystemToGCSOperator(
         task_id="upload_vehicle_parquet_to_gcs",
         src="{{ti.xcom_pull(task_ids='format_to_parquet_vehicle')}}",
-        dst=f"traffic_data/vehicle/CHI_Traffic_vehicle_{dt.datetime.today().strftime('%Y%m%d')}.parquet",
+        dst=f"traffic_data/vehicle/chi_traffic_vehicle_{dt.datetime.today().strftime('%Y%m%d')}.parquet",
         bucket=BUCKET,
     )
 
