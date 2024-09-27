@@ -1,0 +1,30 @@
+# dbt build artifacts
+target/
+dbt_modules/
+logs/
+keys/
+
+# User-specific profiles (contains sensitive connection info)
+profiles.yml
+
+# Python virtual environments
+venv/
+.env/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# System files
+.DS_Store
+
+# Jupyter notebook checkpoints (if you're using notebooks)
+.ipynb_checkpoints/
+
+# VSCode settings (if you're using VSCode)
+.vscode/
+
+# Secret environment files (if any)
+.env.local
+.env.development
+.env.production
