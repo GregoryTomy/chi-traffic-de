@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 dbt-core = "*"
 dbt-bigquery = "*"
+shandy-sqlfmt = {extras = ["jinjafmt"], version = "*"}
 
 [dev-packages]
 

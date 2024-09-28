@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: staging
+    database: sf-traffic-de
+    schema: raw_data
+
+    tables:
+      - name: crash_20240925
+      - name: people_20240925
+      - name: vehicle_20240925
