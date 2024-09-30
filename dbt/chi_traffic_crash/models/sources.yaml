@@ -1,0 +1,41 @@
+version: 2
+
+sources:
+  - name: staging
+    database: sf-traffic-de
+    schema: raw_data
+
+    tables:
+      - name: crash_20240925
+        columns:
+          - name: crash_record_id
+            tests:
+              - not_null
+              - unique
+      - name: people_20240925
+        columns:
+          - name: person_id
+            tests:
+              - not_null
+              - unique
+          - name: crash_record_id
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('crash_20240925')
+                  field: crash_record_id
+          - name: vehicle_id
+            tests:
+              - relationships:
+                  to: ref('vehicle_20240925')
+                  field: vehicle_id
+
+      - name: vehicle_20240925
+        columns:
+          - name: crash_unit_id
+            tests:
+              - not_null
+              - unique
+          - name: crash_record_id
+            tests:
+              - not_null

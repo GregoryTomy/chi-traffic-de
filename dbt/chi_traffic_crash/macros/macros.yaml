@@ -5,3 +5,6 @@ macros:
     description: >
       Converts string representation of boolean values ('Y', 'N') to actual boolean
       data types (True, False). Returns NULL if input value does not match 'Y' or 'N'.
+  - name: string_empty_to_null
+    description: >
+      Converts empty string to NULL.
