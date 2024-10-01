@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: refined_dim_datetime
+    columns:
+      - name: crash_datetime
+        tests:
+          - not_null
+
+      - name: year
+        tests:
+          - not_null
+
+      - name: month
+        tests:
+          - not_null
+
+      - name: day
+        tests:
+          - not_null
+
+      - name: quarter
+        tests:
+          - not_null
+
+      - name: week
+        tests:
+          - not_null
+
+      - name: day_of_week
+        tests:
+          - not_null
+
+      - name: is_weekend
+        tests:
+          - not_null
+
+      - name: is_winter
+        tests:
+          - not_null
