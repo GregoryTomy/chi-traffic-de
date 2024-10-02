@@ -1,5 +1,12 @@
 # Fact and Dimension Table Design
 
+> Using a full snapshot approach. Update docs.
+
+# Notes: 10/02/2024
+- using a full snapshot approach with one master dimension table being appened with each run.
+- paritionining in BigQuery using parition date column.
+- [CHECK] does providing merge incremental strategy with no condition mimic append behavior?
+
 ## 1. Fact Table
 
 The fact table will contain quantifiable data related to each crash event (e.g., injuries, fatalities, crash counts). This is where most of your numerical analysis will occur.

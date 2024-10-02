@@ -38,3 +38,4 @@ models:
       - name: is_winter
         tests:
           - not_null
+  - name: refined_dim_location

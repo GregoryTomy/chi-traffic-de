@@ -1,4 +1,8 @@
 
+# 10/02/2024
+- build airflow pipeline to bring in geography data
+- load and parse geojson data in bigquery.
+
 ## General
 - move variables to env file
     - had issues with airflow recognizing it, fix later

@@ -1,6 +1,7 @@
 {{
     config(
-        materialized="view",
+        materialized="incremental",
+        unique_key="crash_datetime",
     )
 }}
 
@@ -27,6 +28,5 @@ select
         when extract(month from crash_datetime) in (12, 1, 2) then true else false
     end as is_winter,
 
-    '{{run_started_at}}' as load_ts_utc
 from unique_dates
 order by crash_datetime

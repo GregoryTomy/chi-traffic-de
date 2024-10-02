@@ -36,5 +36,8 @@ models:
       +materialized: view
       +schema: staging
     refined:
-        +materialized: view
+        +materialized: incremental
         +schema: refined
+    mart:
+        +materialized: view
+        +schema: mart
