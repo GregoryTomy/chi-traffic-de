@@ -1,4 +1,4 @@
-# [IN PROGRESS - see todo.md for working updates] Chicago Traffic Crash Insights Dashboard
+# [IN PROGRESS - see ![](notes/todo.md) for working updates] Chicago Traffic Crash Insights Dashboard
 I am currently working on a Data Engineering project that aims to build an interactive insights dashboard for traffic crash data in Chicago. The project leverages Google Cloud Platform (GCP) to house the data warehouse infrastructure, with orchestration managed by Apache Airflow and analytics engineering handled through dbt.
 
 ## Key components:
