@@ -1,4 +1,12 @@
 
+# 10/05/2024
+- Fetched, processed, and loaded geojson data to BQ
+- used custom python script to process geojson to ndjson
+- changed date to date of run "{{ ds_nodash}}"
+- TODO:
+    - transform neighborhood and ward to GEOGRAPHY
+    - Create dimensions
+
 # 10/02/2024
 - build airflow pipeline to bring in geography data
 - load and parse geojson data in bigquery.

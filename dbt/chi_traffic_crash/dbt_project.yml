@@ -41,3 +41,6 @@ models:
     mart:
         +materialized: view
         +schema: mart
+
+    seeds:
+        +schema: seed
