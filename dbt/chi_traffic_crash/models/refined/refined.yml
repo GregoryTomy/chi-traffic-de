@@ -39,3 +39,4 @@ models:
         tests:
           - not_null
   - name: refined_dim_location
+  - name: refined_ward

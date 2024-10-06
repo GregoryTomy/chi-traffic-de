@@ -1,4 +1,7 @@
 
+# 10/06/2024
+- Will need to update source names to not be date dependent OR dynamically assign dates
+
 # 10/05/2024
 - Fetched, processed, and loaded geojson data to BQ
 - used custom python script to process geojson to ndjson

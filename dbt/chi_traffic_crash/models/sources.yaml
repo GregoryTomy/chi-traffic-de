@@ -39,3 +39,23 @@ sources:
           - name: crash_record_id
             tests:
               - not_null
+
+      - name: ward_20241005
+        columns:
+          - name: ward_id
+            tests:
+              - not_null
+              - unique
+          - name: geometry
+            tests:
+              - not_null
+
+      - name: neighborhood_20241005
+        columns:
+          - name: pri_neigh
+            tests:
+              - not_null
+              - unique
+          - name: geometry
+            tests:
+              - not_null
