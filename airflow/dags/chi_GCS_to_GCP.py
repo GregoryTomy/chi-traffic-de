@@ -8,6 +8,7 @@ from airflow.utils.dates import days_ago
 from airflow.providers.google.cloud.transfers.gcs_to_bigquery import (
     GCSToBigQueryOperator,
 )
+from airflow.providers.google.cloud.operators.bigquery import BigQueryInsertJobOperator
 from airflow.operators.dummy import DummyOperator
 
 from google.cloud import storage
@@ -18,13 +19,13 @@ BUCKET = "chi-traffic-de-bucket"
 default_args = {"owner": "duncanh", "depends_on_past": False, "retries": 1}
 # BigQuery Variables
 BQ_DATASET = "raw_data"
-BQ_TABLE_CRASH = "crash"
-BQ_TABLE_PEOPLE = "people"
-BQ_TABLE_VEHICLE = "vehicle"
+TABLES = {
+    "crash": "traffic_data/crash/chi_traffic_crash_{{ds_nodash}}.parquet",
+    "people": "traffic_data/people/chi_traffic_people_{{ds_nodash}}.parquet",
+    "vehicle": "traffic_data/vehicle/chi_traffic_vehicle_{{ds_nodash}}.parquet",
+}
 
 default_args = {"owner": "duncanh", "depends_on_past": False, "retries": 1}
-
-date_today = dt.datetime.today().strftime("%Y%m%d")
 
 with DAG(
     "export_data_from_GCS_to_GCP",
@@ -37,43 +38,47 @@ with DAG(
 
     wait_for_fetch_dag = DummyOperator(task_id="wait_for_fetch_to_GCS_dag")
 
-    load_crash_data_to_bq = GCSToBigQueryOperator(
-        task_id="load_crash_data_to_bq",
-        bucket=BUCKET,
-        source_objects=[f"traffic_data/crash/chi_traffic_crash_{date_today}.parquet"],
-        destination_project_dataset_table=f"{BQ_DATASET}.{BQ_TABLE_CRASH}_{date_today}",
-        source_format="PARQUET",
-        write_disposition="WRITE_TRUNCATE",  # * replaces entire contents of the destination table
-        # TODO: Change to append when modifying data ingestion to daily
-        autodetect=True,
-    )
+    for table_name, gcs_path in TABLES.items():
+        load_data_to_bq = GCSToBigQueryOperator(
+            task_id=f"load_{table_name}_to_bigquery",
+            bucket=BUCKET,
+            source_objects=[gcs_path],
+            destination_project_dataset_table=f"{BQ_DATASET}.{table_name}",
+            source_format="PARQUET",
+            write_disposition="WRITE_APPEND",
+            autodetect=True,
+        )
 
-    load_people_data_to_bq = GCSToBigQueryOperator(
-        task_id="load_people_data_to_bq",
-        bucket=BUCKET,
-        source_objects=[f"traffic_data/people/chi_traffic_people_{date_today}.parquet"],
-        destination_project_dataset_table=f"{BQ_DATASET}.{BQ_TABLE_PEOPLE}_{date_today}",
-        source_format="PARQUET",
-        write_disposition="WRITE_TRUNCATE",  # * replaces entire contents of the destination table
-        # TODO: Change to append when modifying data ingestion to daily
-        # FIXED. Had an issue with an unknown column :@computed_region_qgnn_b9vv.
-        ignore_unknown_values=True,
-        autodetect=True,
-    )
+        add_partition_date_column = BigQueryInsertJobOperator(
+            task_id=f"add_partition_date_column_{table_name}",
+            configuration={
+                "query": {
+                    "query": f"""
+                        ALTER TABLE `{BQ_DATASET}.{table_name}`
+                        ADD COLUMN IF NOT EXISTS partition_date DATE;
+                    """,
+                    "useLegacySql": False,
+                }
+            },
+        )
 
-    load_vehicle_data_to_bq = GCSToBigQueryOperator(
-        task_id="load_vehicle_data_to_bq",
-        bucket=BUCKET,
-        source_objects=[
-            f"traffic_data/vehicle/chi_traffic_vehicle_{date_today}.parquet"
-        ],
-        destination_project_dataset_table=f"{BQ_DATASET}.{BQ_TABLE_VEHICLE}_{date_today}",
-        source_format="PARQUET",
-        write_disposition="WRITE_TRUNCATE",  # * replaces entire contents of the destination table
-        # TODO: Change to append when modifying data ingestion to daily
-        autodetect=True,
-    )
+        update_partition_date = BigQueryInsertJobOperator(
+            task_id=f"update_partition_date_{table_name}",
+            configuration={
+                "query": {
+                    "query": f"""
+                        UPDATE `{BQ_DATASET}.{table_name}`
+                        SET partition_date = DATE('{{{{ execution_date }}}}')
+                        WHERE partition_date IS NULL;
+                        """,
+                    "useLegacySql": False,
+                }
+            },
+        )
 
-    wait_for_fetch_dag >> load_crash_data_to_bq
-    wait_for_fetch_dag >> load_people_data_to_bq
-    wait_for_fetch_dag >> load_vehicle_data_to_bq
+        (
+            wait_for_fetch_dag
+            >> load_data_to_bq
+            >> add_partition_date_column
+            >> update_partition_date
+        )

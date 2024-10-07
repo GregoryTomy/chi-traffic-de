@@ -39,4 +39,10 @@ models:
         tests:
           - not_null
   - name: refined_dim_location
+    columns:
+      - name: location_hkey
+        tests:
+          - unique
+          - not_null
   - name: refined_ward
+  - name: refined_dim_location_enriched

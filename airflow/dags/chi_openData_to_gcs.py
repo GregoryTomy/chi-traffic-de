@@ -32,8 +32,10 @@ TRAFFIC_INJURY_PERSON_URL = (
 
 default_args = {"owner": "duncanh", "depends_on_past": False, "retries": 1}
 
+execution_date = "{{ds_nodash}}"
+
 with DAG(
-    "fetch_and_upload_CHI_crash_data_to_gcs_v4",
+    "fetch_and_upload_CHI_data_v5",
     default_args=default_args,
     description="Fetch multiple datasets from Chicago OpenData API, store temporarily, and display row count",
     schedule_interval=None,
@@ -68,7 +70,7 @@ with DAG(
         provide_context=True,
         op_kwargs={
             "api_url": TRAFFIC_INJURY_CRASHES_URL,
-            "tmp_file_name": f"chi_traffic_crashes_{dt.datetime.today().strftime('%Y%m%d')}",
+            "tmp_file_name": f"chi_traffic_crashes_{execution_date}",
         },
     )
 
@@ -78,7 +80,7 @@ with DAG(
         provide_context=True,
         op_kwargs={
             "api_url": TRAFFIC_INJURY_PERSON_URL,
-            "tmp_file_name": f"chi_traffic_people_{dt.datetime.today().strftime('%Y%m%d')}",
+            "tmp_file_name": f"chi_traffic_people_{execution_date}",
         },
     )
 
@@ -88,7 +90,7 @@ with DAG(
         provide_context=True,
         op_kwargs={
             "api_url": TRAFFIC_INJURY_VEHICLE_URL,
-            "tmp_file_name": f"chi_traffic_vehicle_{dt.datetime.today().strftime('%Y%m%d')}",
+            "tmp_file_name": f"chi_traffic_vehicle_{execution_date}",
         },
     )
 

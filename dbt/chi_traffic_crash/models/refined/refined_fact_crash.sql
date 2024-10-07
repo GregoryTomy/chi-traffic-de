@@ -13,6 +13,7 @@ with
             crash_datetime,
             location_latitude,
             location_longitude
+            is_intersection_related,
         from {{ ref("staging_crash") }}
     )
 
@@ -26,13 +27,15 @@ select
     crash.total_fatal_injuries_number,
     crash.weather_condition_code,
     crash.lighting_condition_code,
+    is_intersection_related,
     date.date_hkey as date_hkey,
     loc.location_hkey as location_hkey
 from crash_data as crash
 left join
     {{ ref("refined_dim_datetime") }} as date
     on crash.crash_datetime = date.crash_datetime
-left join
+    {# left join
     {{ ref("refined_dim_location") }} as loc
     on crash.location_latitude = loc.latitude
-    and crash.location_longitude = loc.longitude
+    and crash.location_longitude = loc.longitude #}
+    

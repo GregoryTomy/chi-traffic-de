@@ -1,4 +1,10 @@
 
+# 10/07/2024
+- removing street information in location data and keeping to geography point information.
+- connect airflow and dbt
+    - change partition date on dbt models to reflect source data
+- OR better approach, create date column during loading into BQ from airflow.
+
 # 10/06/2024
 - Will need to update source names to not be date dependent OR dynamically assign dates
 
