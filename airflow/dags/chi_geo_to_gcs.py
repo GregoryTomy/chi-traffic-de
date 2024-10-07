@@ -20,7 +20,7 @@ GEOJSON_DATASETS = {
     "ward": "https://data.cityofchicago.org/resource/p293-wvbd.geojson",
 }
 
-date_today = "{{ds_nodash}}"
+PARTITION_DATE = "{{ds_nodash}}"
 
 default_args = {"owner": "duncanh", "depends_on_past": False, "retries": 1}
 
@@ -51,14 +51,14 @@ with DAG(
             provide_context=True,
             op_kwargs={
                 "api_url": api_url,
-                "tmp_file_name": f"chi_boundaries_{dataset_name}_{date_today}",
+                "tmp_file_name": f"chi_boundaries_{dataset_name}_{PARTITION_DATE}",
             },
         )
 
         upload_data = LocalFilesystemToGCSOperator(
             task_id=f"upload_{dataset_name}_geojson_to_gcs",
             src="{{ti.xcom_pull(task_ids='fetch_geojson_" + dataset_name + "')}}",
-            dst=f"geojson/chi_boundaries_{dataset_name}_{date_today}.geojson",
+            dst=f"geojson/chi_boundaries_{dataset_name}_{PARTITION_DATE}.geojson",
             bucket=BUCKET,
         )
 
