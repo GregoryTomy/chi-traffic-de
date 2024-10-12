@@ -1,7 +1,6 @@
 {{
     config(
         materialized="incremental",
-        partition_by={"field": "partition_date", "data_type": "date"},
     )
 }}
 
@@ -23,5 +22,4 @@ select
     st_geogpoint(longitude, latitude) as location_point,
     latitude,
     longitude,
-    date("{{run_started_at.strftime('%Y-%m-%d')}}") as partition_date,
 from location_data

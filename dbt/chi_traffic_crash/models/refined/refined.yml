@@ -6,6 +6,7 @@ models:
       - name: crash_datetime
         tests:
           - not_null
+          - unique
 
       - name: year
         tests:
@@ -45,4 +46,22 @@ models:
           - unique
           - not_null
   - name: refined_ward
+    columns:
+      - name: ward_hkey
+        tests:
+          - unique
+          - not_null
+  - name: refined_neighborhood
+    columns:
+      - name: neighborhood_hkey
+        tests:
+          - unique
+          - not_null
+
   - name: refined_dim_location_enriched
+  - name: refined_fact_crash
+    columns:
+      - name: crash_hkey
+        tests:
+          - unique
+          - not_null

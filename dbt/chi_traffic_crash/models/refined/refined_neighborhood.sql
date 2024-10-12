@@ -1,7 +1,6 @@
 {{
     config(
         materialized="incremental",
-        partition_by={"field": "partition_date", "data_type": "date"},
     )
 }}
 
@@ -22,5 +21,4 @@ select
     neighborhood_geometry as neighborhood_geometry,
     shape_length as shape_length,
     shape_area as shape_area,
-    date("{{run_started_at.strftime('%Y-%m-%d')}}") as partition_date,
 from neighborhood_data

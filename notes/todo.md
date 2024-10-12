@@ -2,6 +2,10 @@
 # 10/12/2024
 - check transaction numbers when running load dags tommorrow
 - bringing in the latest partition to staging layer and onwards. Raw layer will hold the appending table with all partitions.
+    - staging has the latest partition.
+- THOUGHT: Currently not using time dimension. Create hours of the day for hourly breakdown?
+    - updated datetime dim to include hour column and is_rush_hour column.
+- updated location dimension to only geopoint (long, lat)
 
 
 # 10/07/2024

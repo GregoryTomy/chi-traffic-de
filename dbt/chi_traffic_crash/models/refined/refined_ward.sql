@@ -1,7 +1,6 @@
 {{
     config(
         materialized="incremental",
-        partition_by={"field": "partition_date", "data_type": "date"},
     )
 }}
 
@@ -17,5 +16,4 @@ select
     ward_geometry as ward_geometry,
     st_length as st_length,
     st_area as st_area,
-    date("{{run_started_at.strftime('%Y-%m-%d')}}") as partition_date,
 from ward_data
