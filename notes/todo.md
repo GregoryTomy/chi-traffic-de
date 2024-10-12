@@ -1,4 +1,9 @@
 
+# 10/12/2024
+- check transaction numbers when running load dags tommorrow
+- bringing in the latest partition to staging layer and onwards. Raw layer will hold the appending table with all partitions.
+
+
 # 10/07/2024
 - removing street information in location data and keeping to geography point information.
 - connect airflow and dbt

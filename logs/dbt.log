@@ -43,3 +43,19 @@ Runtime Error
 [0m11:22:09.186345 [debug] [MainThread]: Command `dbt test` failed at 11:22:09.186292 after 0.04 seconds
 [0m11:22:09.186530 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10405e270>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1041a1820>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1040b5dc0>]}
 [0m11:22:09.186694 [debug] [MainThread]: Flushing usage events
+[0m09:40:48.724362 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104124770>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104bf9280>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104bf8ef0>]}
+
+
+============================== 09:40:48.727726 | 0708c9ab-e151-4f86-97bb-05caa2a2fe0e ==============================
+[0m09:40:48.727726 [info ] [MainThread]: Running with dbt=1.8.7
+[0m09:40:48.728098 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/Users/gregorytomy/.dbt', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'logs', 'version_check': 'True', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt build -s staging_crash', 'log_format': 'default', 'static_parser': 'True', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m09:40:48.728476 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /Users/gregorytomy/chi_traffic/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m09:40:48.729555 [debug] [MainThread]: Resource report: {"command_name": "build", "command_wall_clock_time": 0.03771925, "process_user_time": 0.570919, "process_kernel_time": 0.105444, "process_mem_max_rss": "91734016", "command_success": false, "process_in_blocks": "0", "process_out_blocks": "0"}
+[0m09:40:48.730089 [debug] [MainThread]: Command `dbt build` failed at 09:40:48.729881 after 0.04 seconds
+[0m09:40:48.730421 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104954920>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104856b40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104ba1a30>]}
+[0m09:40:48.730632 [debug] [MainThread]: Flushing usage events
+[0m09:40:48.834674 [debug] [MainThread]: Error sending anonymous usage statistics. Disabling tracking for this execution. If you wish to permanently disable tracking, see: https://docs.getdbt.com/reference/global-configs#send-anonymous-usage-stats.

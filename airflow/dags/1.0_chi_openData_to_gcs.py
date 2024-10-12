@@ -35,7 +35,7 @@ default_args = {"owner": "duncanh", "depends_on_past": False, "retries": 1}
 execution_date = "{{ds_nodash}}"
 
 with DAG(
-    "fetch_and_upload_CHI_data_v5",
+    "1.0_fetch_and_upload_CHI_data_v6",
     default_args=default_args,
     description="Fetch multiple datasets from Chicago OpenData API, store temporarily, and display row count",
     schedule_interval=None,
@@ -119,21 +119,21 @@ with DAG(
     upload_parquet_crash = LocalFilesystemToGCSOperator(
         task_id="upload_crash_parquet_to_gcs",
         src="{{ti.xcom_pull(task_ids='format_to_parquet_crash')}}",
-        dst=f"traffic_data/crash/chi_traffic_crash_{dt.datetime.today().strftime('%Y%m%d')}.parquet",
+        dst=f"traffic_data/crash/chi_traffic_crash_{execution_date}.parquet",
         bucket=BUCKET,
     )
 
     upload_parquet_people = LocalFilesystemToGCSOperator(
         task_id="upload_people_parquet_to_gcs",
         src="{{ti.xcom_pull(task_ids='format_to_parquet_people')}}",
-        dst=f"traffic_data/people/chi_traffic_people_{dt.datetime.today().strftime('%Y%m%d')}.parquet",
+        dst=f"traffic_data/people/chi_traffic_people_{execution_date}.parquet",
         bucket=BUCKET,
     )
 
     upload_parquet_vehicle = LocalFilesystemToGCSOperator(
         task_id="upload_vehicle_parquet_to_gcs",
         src="{{ti.xcom_pull(task_ids='format_to_parquet_vehicle')}}",
-        dst=f"traffic_data/vehicle/chi_traffic_vehicle_{dt.datetime.today().strftime('%Y%m%d')}.parquet",
+        dst=f"traffic_data/vehicle/chi_traffic_vehicle_{execution_date}.parquet",
         bucket=BUCKET,
     )
 

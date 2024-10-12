@@ -5,7 +5,15 @@
 }}
 
 with
-    source as (select * from {{ source("staging", "crash_20240925") }}),
+    latest_partition as (
+        select max(partition_date) as latest_date from {{ source("staging", "crash") }}
+    ),
+
+    source as (
+        select *
+        from {{ source("staging", "crash") }}
+        where partition_date = (select latest_date from latest_partition)
+    ),
 
     renamed as (
         select
@@ -34,7 +42,8 @@ with
             {{ adapter.quote("injuries_total") }} as total_injuries_number,
             {{ adapter.quote("injuries_fatal") }} as total_fatal_injuries_number,
             {{ adapter.quote("latitude") }} as location_latitude,
-            {{ adapter.quote("longitude") }} as location_longitude
+            {{ adapter.quote("longitude") }} as location_longitude,
+            {{ adapter.quote("partition_date") }} as partition_date,
         from source
     ),
 
@@ -76,7 +85,8 @@ with
             cast(total_injuries_number as int64) as total_injuries_number,
             cast(total_fatal_injuries_number as int64) as total_fatal_injuries_number,
             cast(location_latitude as float64) as location_latitude,
-            cast(location_longitude as float64) as location_longitude
+            cast(location_longitude as float64) as location_longitude,
+            cast(partition_date as date) as partition_date,
         from renamed
     ),
 

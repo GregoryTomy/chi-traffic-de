@@ -6,13 +6,13 @@ sources:
     schema: raw_data
 
     tables:
-      - name: crash_20240925
+      - name: crash
         columns:
           - name: crash_record_id
             tests:
               - not_null
               - unique
-      - name: people_20240925
+      - name: people
         columns:
           - name: person_id
             tests:
@@ -22,15 +22,15 @@ sources:
             tests:
               - not_null
               - relationships:
-                  to: ref('crash_20240925')
+                  to: ref('crash')
                   field: crash_record_id
           - name: vehicle_id
             tests:
               - relationships:
-                  to: ref('vehicle_20240925')
+                  to: ref('vehicle')
                   field: vehicle_id
 
-      - name: vehicle_20240925
+      - name: vehicle
         columns:
           - name: crash_unit_id
             tests:
@@ -40,7 +40,7 @@ sources:
             tests:
               - not_null
 
-      - name: ward_20241005
+      - name: ward
         columns:
           - name: ward_id
             tests:
@@ -50,7 +50,7 @@ sources:
             tests:
               - not_null
 
-      - name: neighborhood_20241005
+      - name: neighborhood
         columns:
           - name: pri_neigh
             tests:

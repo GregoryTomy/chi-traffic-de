@@ -5,7 +5,14 @@
 }}
 
 with
-    source as (select * from {{ source("staging", "people_20240925") }}),
+    latest_partition as (
+        select max(partition_date) as latest_date from {{ source("staging", "people") }}
+    ),
+    source as (
+        select *
+        from {{ source("staging", "people") }}
+        where partition_date = (select latest_date from latest_partition)
+    ),
     renamed as (
         select
             {{ adapter.quote("person_id") }} as person_id,
@@ -19,7 +26,8 @@ with
             {{ adapter.quote("physical_condition") }} as driver_physical_condition,
             {{ adapter.quote("bac_result") }} bac_result,
             {{ adapter.quote("bac_result_value") }} as bac_result_number,
-            {{ adapter.quote("cell_phone_use") }} as is_phone_use
+            {{ adapter.quote("cell_phone_use") }} as is_phone_use,
+            {{ adapter.quote("partition_date") }} as partition_date,
 
         from source
     ),
@@ -47,7 +55,8 @@ with
             ) as driver_physical_condition,
             cast({{ string_empty_to_null("bac_result") }} as string) as bac_result,
             cast(bac_result_number as float64) as bac_result_number,
-            cast({{ convert_to_boolean("is_phone_use") }} as boolean) as is_phone_use
+            cast({{ convert_to_boolean("is_phone_use") }} as boolean) as is_phone_use,
+            cast(partition_date as date) as partition_date,
         from renamed
     )
 

@@ -28,7 +28,7 @@ TABLES = {
 default_args = {"owner": "duncanh", "depends_on_past": False, "retries": 1}
 
 with DAG(
-    "export_data_from_GCS_to_GCP",
+    "2.0_export_data_from_GCS_to_GCP",
     default_args=default_args,
     description="Load data from GCS to BigQuery with partitioning on date",
     schedule_interval=None,

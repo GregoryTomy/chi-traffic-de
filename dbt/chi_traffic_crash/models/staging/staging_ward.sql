@@ -5,7 +5,15 @@
 }}
 
 with
-    source as (select * from {{ source("staging", "ward_20241005") }}),
+    latest_partition as (
+        select max(partition_date) as latest_date from {{ source("staging", "ward") }}
+    ),
+
+    source as (
+        select *
+        from {{ source("staging", "ward") }}
+        where partition_date = (select latest_date from latest_partition)
+    ),
 
     renamed as (
         select
@@ -17,6 +25,7 @@ with
             edit_date as edit_date,
             st_length_ as st_length,
             st_area_sh as st_area,
+            partition_date as partition_date,
         from source
     ),
 
@@ -29,7 +38,8 @@ with
             cast(object_id as string) as object_id,
             cast(edit_date as timestamp) as edit_date,
             cast(st_length as float64) as st_length,
-            cast(st_area as float64) as st_area
+            cast(st_area as float64) as st_area,
+            cast(partition_date as date) as partition_date,
         from renamed
     )
 

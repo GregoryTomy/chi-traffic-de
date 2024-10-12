@@ -1,5 +1,14 @@
 with
-    source as (select * from {{ source("staging", "vehicle_20240925") }}),
+    latest_partition as (
+        select max(partition_date) as latest_date
+        from {{ source("staging", "vehicle") }}
+    ),
+
+    source as (
+        select *
+        from {{ source("staging", "vehicle") }}
+        where partition_date = (select latest_date from latest_partition)
+    ),
     renamed as (
         select
             {{ adapter.quote("crash_unit_id") }} as crash_vehicle_id,
@@ -17,6 +26,7 @@ with
             {{ adapter.quote("travel_direction") }} as vehicle_travel_direction,
             {{ adapter.quote("maneuver") }} as vehicle_maneuver,
             {{ adapter.quote("exceed_speed_limit_i") }} as is_speeding,
+            {{ adapter.quote("partition_date") }} as partition_date,
         from source
     ),
 
@@ -49,6 +59,7 @@ with
                 {{ string_empty_to_null("vehicle_maneuver") }} as string
             ) as vehicle_maneuver,
             cast({{ convert_to_boolean("is_speeding") }} as boolean) as is_speeding,
+            cast(partition_date as date) as partition_date,
         from renamed
     )
 

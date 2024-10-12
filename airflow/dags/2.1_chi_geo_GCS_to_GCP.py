@@ -49,7 +49,7 @@ def process_geojson(local_file_path, **kwargs):
 
 
 with DAG(
-    "export_geojson_data_from_GCS_to_GCP",
+    "2.1_export_geojson_data_from_GCS_to_GCP",
     default_args=default_args,
     description="Fetch geojson data, process it to geojsonl, and load to BigQuery with partitioning on date",
     schedule_interval=None,

@@ -25,7 +25,7 @@ PARTITION_DATE = "{{ds_nodash}}"
 default_args = {"owner": "duncanh", "depends_on_past": False, "retries": 1}
 
 with DAG(
-    "fetch_and_upload_geojson_data_to_gcs",
+    "1.1_fetch_and_upload_geojson_data_to_gcs",
     default_args=default_args,
     description="Fetch geography datasets from Chicago OpenData API,and upload to GCS",
     schedule_interval=None,
