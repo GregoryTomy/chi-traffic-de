@@ -65,3 +65,16 @@ models:
         tests:
           - unique
           - not_null
+  - name: refined_fact_people
+    columns:
+      - name: people_hkey
+        tests:
+          - unique
+          - not_null
+
+  - name: refined_fact_vehicle
+    columns:
+      - name: vehicle_hkey
+        tests:
+          - unique
+          - not_null

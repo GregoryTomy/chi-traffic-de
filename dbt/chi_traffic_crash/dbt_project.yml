@@ -40,7 +40,3 @@ models:
         +schema: refined
     mart:
         +materialized: view
-        +schema: mart
-
-    seeds:
-        +schema: seed
