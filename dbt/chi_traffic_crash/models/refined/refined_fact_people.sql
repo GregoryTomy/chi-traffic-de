@@ -27,5 +27,4 @@ select
         then false
         else true
     end as is_physically_impaired,
-    partition_date,
 from people_data

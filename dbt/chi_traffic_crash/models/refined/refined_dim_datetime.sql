@@ -1,7 +1,7 @@
 {{
     config(
         materialized="incremental",
-        unique_key="crash_datetime",
+        unique_key="date_hkey",
     )
 }}
 

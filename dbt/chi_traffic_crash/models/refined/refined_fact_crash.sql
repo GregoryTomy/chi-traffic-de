@@ -23,6 +23,7 @@ with
             road_defect_code,
             damage_level_code,
             primary_cause_explanation,
+            partition_date
         from {{ ref("staging_crash") }}
     )
 
@@ -55,7 +56,8 @@ select
     crash.damage_level_code,
     crash.primary_cause_explanation,
     date.date_hkey as date_hkey,
-    loc.location_hkey as location_hkey
+    loc.location_hkey as location_hkey,
+    crash.partition_date
 from crash_data as crash
 left join
     {{ ref("refined_dim_datetime") }} as date

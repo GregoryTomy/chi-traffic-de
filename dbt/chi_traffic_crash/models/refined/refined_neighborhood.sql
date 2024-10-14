@@ -1,8 +1,4 @@
-{{
-    config(
-        materialized="incremental",
-    )
-}}
+{{ config(materialized="incremental", unique_key="neighborhood_hkey") }}
 
 with neighborhood_data as (select * from {{ ref("staging_neighborhood") }})
 
@@ -21,4 +17,5 @@ select
     neighborhood_geometry as neighborhood_geometry,
     shape_length as shape_length,
     shape_area as shape_area,
+    partition_date as partition_date
 from neighborhood_data

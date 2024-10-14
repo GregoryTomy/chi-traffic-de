@@ -40,3 +40,4 @@ models:
         +schema: refined
     mart:
         +materialized: view
+        +schema: mart

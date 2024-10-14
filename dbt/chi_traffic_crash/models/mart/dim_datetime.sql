@@ -5,4 +5,4 @@
 }}
 
 select *
-from {{ ref("refined_fact_crash") }}
+from {{ ref("refined_dim_datetime") }}

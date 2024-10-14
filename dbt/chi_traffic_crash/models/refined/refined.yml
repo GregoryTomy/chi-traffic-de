@@ -59,6 +59,11 @@ models:
           - not_null
 
   - name: refined_dim_location_enriched
+    columns:
+      - name: location_hkey
+        tests:
+          - unique
+          - not_null
   - name: refined_fact_crash
     columns:
       - name: crash_hkey
@@ -67,7 +72,7 @@ models:
           - not_null
   - name: refined_fact_people
     columns:
-      - name: people_hkey
+      - name: person_hkey
         tests:
           - unique
           - not_null

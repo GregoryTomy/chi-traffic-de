@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: fact_crash
+    columns:
+      - name: crash_hkey
+        tests:
+          - not_null
+          - unique
+
+  - name: fact_people
+    columns:
+      - name: person_hkey
+        tests:
+          - not_null
+          - unique
+
+  - name: fact_vehicle
+    columns:
+      - name: vehicle_hkey
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_location
+    columns:
+      - name: location_hkey
+        tests:
+          - not_null
+          - unique
+  - name: dim_datetime

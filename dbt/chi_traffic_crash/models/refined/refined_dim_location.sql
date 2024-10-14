@@ -1,8 +1,4 @@
-{{
-    config(
-        materialized="incremental",
-    )
-}}
+{{ config(materialized="incremental", unique_key="location_hkey") }}
 
 with
     location_data as (

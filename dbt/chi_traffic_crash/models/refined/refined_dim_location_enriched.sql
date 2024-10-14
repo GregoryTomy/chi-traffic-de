@@ -1,8 +1,4 @@
-{{
-    config(
-        materialized="view",
-    )
-}}
+{{ config(materialized="view", unique_key="location_hkey") }}
 
 with
     location_data as (select * from {{ ref("refined_dim_location") }}),
