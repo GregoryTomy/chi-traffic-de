@@ -35,3 +35,20 @@ resource "google_bigquery_dataset" "chi-traffic-dataset" {
   dataset_id                 = var.bq_dataset_name
   delete_contents_on_destroy = true
 }
+
+####################################################################################
+# Google service accounts
+####################################################################################
+
+## Metabase
+resource "google_service_account" "metabase_service_account" {
+    account_id = "metabase-service-account"
+    display_name = "Metabase service account"
+}
+
+resource "google_project_iam_member" "metabase_sa_roles" {
+    for_each = toset(var.metabase_bq_roles)
+    project = var.project_name
+    role = each.value
+    member = "serviceAccount:${google_service_account.metabase_service_account.email}"
+}

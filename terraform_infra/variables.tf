@@ -23,3 +23,12 @@ variable "gcs_bucket_name" {
   description = "GCS bucket name for chicago traffic data"
   default     = "chi-traffic-de-bucket"
 }
+
+variable "metabase_bq_roles" {
+    description = "List of roles to assign to metabase service account"
+    type = list(string)
+    default = [
+        "roles/bigquery.dataViewer",
+        "roles/bigquery.metadataViewer",
+        "roles/bigquery.jobUser" ]
+}

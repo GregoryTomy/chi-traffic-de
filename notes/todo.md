@@ -1,3 +1,7 @@
+# 10/14/2024
+- Trying out Metabase as the BI tool.
+- Testing getting service accounts for metabase in terraform.
+    - TODO: Use Terraform to get all infrastructure related resources.
 
 # 10/12/2024
 - check transaction numbers when running load dags tommorrow
