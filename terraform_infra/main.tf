@@ -14,6 +14,10 @@ provider "google" {
   region  = "us-central1"
 }
 
+provider "local" {
+
+}
+
 # Google Cloud Storage bucket
 resource "google_storage_bucket" "chi-traffic-bucket" {
   name          = var.gcs_bucket_name
@@ -51,4 +55,17 @@ resource "google_project_iam_member" "metabase_sa_roles" {
     project = var.project_name
     role = each.value
     member = "serviceAccount:${google_service_account.metabase_service_account.email}"
+}
+
+resource "google_service_account_key" "metabase_sa_key" {
+    service_account_id = google_service_account.metabase_service_account.name
+}
+
+resource "local_sensitive_file" "metabase_sa_key_json" {
+    filename = "../metabase/secrets/metabase-sa-key.json"
+    content = google_service_account_key.metabase_sa_key.private_key
+}
+
+output "metabase_sa_key_path" {
+    value = local_sensitive_file.metabase_sa_key_json.filename
 }

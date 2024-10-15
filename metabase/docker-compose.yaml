@@ -1,0 +1,40 @@
+services:
+  metabase:
+    image: metabase/metabase:latest
+    platform: linux/amd64
+    ports:
+      - "3000:3000"
+    environment:
+      GOOGLE_APPLICATION_CREDENTIALS: /secrets/metabase-sa-key.json
+      MB_DB_TYPE: postgres
+      MB_DB_DBNAME: metabase
+      MB_DB_PORT: 5432
+      MB_DB_USER_FILE: /secrets/db_user
+      MB_DB_PASS_FILE: /secrets/db_pass
+      MB_DB_HOST: postgres
+    volumes:
+      - ./secrets:/secrets
+    secrets:
+      - db_user
+      - db_pass
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    hostname: postgres
+    environment:
+      POSTGRES_USER_FILE: /secrets/db_user
+      POSTGRES_PASSWORD_FILE: /secrets/db_pass
+      POSTGRES_DB: metabase
+    volumes:
+      - ./secrets:/secrets
+
+    secrets:
+      - db_user
+      - db_pass
+
+secrets:
+  db_user:
+    file: ./secrets/db_user
+
+  db_pass:
+    file: ./secrets/db_pass

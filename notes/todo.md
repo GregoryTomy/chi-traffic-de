@@ -1,7 +1,10 @@
 # 10/14/2024
 - Trying out Metabase as the BI tool.
+## Terraform
 - Testing getting service accounts for metabase in terraform.
     - TODO: Use Terraform to get all infrastructure related resources.
+- NOTE: Creating service account key through terraform does not provide full JSON structure
+    - using manual service accoune key generation
 
 # 10/12/2024
 - check transaction numbers when running load dags tommorrow
