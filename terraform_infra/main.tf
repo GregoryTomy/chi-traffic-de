@@ -44,28 +44,28 @@ resource "google_bigquery_dataset" "chi-traffic-dataset" {
 # Google service accounts
 ####################################################################################
 
-## Metabase
-resource "google_service_account" "metabase_service_account" {
-    account_id = "metabase-service-account"
-    display_name = "Metabase service account"
+## Tableau
+resource "google_service_account" "tableau_service_account" {
+    account_id = "tableau-service-account"
+    display_name = "Tableau service account"
 }
 
-resource "google_project_iam_member" "metabase_sa_roles" {
-    for_each = toset(var.metabase_bq_roles)
+resource "google_project_iam_member" "tableau_sa_roles" {
+    for_each = toset(var.tableau_bq_roles)
     project = var.project_name
     role = each.value
-    member = "serviceAccount:${google_service_account.metabase_service_account.email}"
+    member = "serviceAccount:${google_service_account.tableau_service_account.email}"
 }
 
-resource "google_service_account_key" "metabase_sa_key" {
-    service_account_id = google_service_account.metabase_service_account.name
+resource "google_service_account_key" "tableau_sa_key" {
+    service_account_id = google_service_account.tableau_service_account.name
 }
 
-resource "local_sensitive_file" "metabase_sa_key_json" {
-    filename = "../metabase/secrets/metabase-sa-key.json"
-    content = google_service_account_key.metabase_sa_key.private_key
+resource "local_sensitive_file" "tableau_sa_key_json" {
+    filename = "../tableau/secrets/tableau-sa-key.json"
+    content = google_service_account_key.tableau_sa_key.private_key
 }
 
-output "metabase_sa_key_path" {
-    value = local_sensitive_file.metabase_sa_key_json.filename
+output "tableau_sa_key_path" {
+    value = local_sensitive_file.tableau_sa_key_json.filename
 }

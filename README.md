@@ -11,6 +11,9 @@ I am currently working on a Data Engineering project that aims to build an inter
 
 This project focuses on providing insights into crash severity, contributing factors, and geographic distribution of incidents to aid city planners and stakeholders.
 
+## Architecture
+![](images/architecture.drawio.png)
+
 ## About The Data
 
 1. **Relationship Between Datasets:**

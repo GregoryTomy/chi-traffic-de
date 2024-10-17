@@ -1,3 +1,6 @@
+# 10/15/2024
+- Switching to Looker for BI. Easier integration with BigQuery and deployment in the cloud.
+
 # 10/14/2024
 - Trying out Metabase as the BI tool.
 ## Terraform

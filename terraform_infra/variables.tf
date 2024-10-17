@@ -24,8 +24,8 @@ variable "gcs_bucket_name" {
   default     = "chi-traffic-de-bucket"
 }
 
-variable "metabase_bq_roles" {
-    description = "List of roles to assign to metabase service account"
+variable "tableau_bq_roles" {
+    description = "List of roles to assign to tableau service account"
     type = list(string)
     default = [
         "roles/bigquery.dataViewer",
