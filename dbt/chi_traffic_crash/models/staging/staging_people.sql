@@ -28,7 +28,6 @@ with
             {{ adapter.quote("bac_result_value") }} as bac_result_number,
             {{ adapter.quote("cell_phone_use") }} as is_phone_use,
             {{ adapter.quote("partition_date") }} as partition_date,
-
         from source
     ),
 

@@ -59,3 +59,18 @@ Runtime Error
 [0m09:40:48.730421 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104954920>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104856b40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104ba1a30>]}
 [0m09:40:48.730632 [debug] [MainThread]: Flushing usage events
 [0m09:40:48.834674 [debug] [MainThread]: Error sending anonymous usage statistics. Disabling tracking for this execution. If you wish to permanently disable tracking, see: https://docs.getdbt.com/reference/global-configs#send-anonymous-usage-stats.
+[0m16:41:27.674231 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11300c680>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x113131160>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x113130dd0>]}
+
+
+============================== 16:41:27.677003 | 8d0f1711-f61d-429c-86f2-860370916608 ==============================
+[0m16:41:27.677003 [info ] [MainThread]: Running with dbt=1.8.7
+[0m16:41:27.677327 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'version_check': 'True', 'log_path': 'logs', 'profiles_dir': '/Users/gregorytomy/.dbt', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt run -s refined_fact_people', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m16:41:27.677619 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /Users/gregorytomy/chi_traffic/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m16:41:27.678612 [debug] [MainThread]: Resource report: {"command_name": "run", "command_wall_clock_time": 0.03658525, "process_user_time": 0.563407, "process_kernel_time": 0.101483, "process_mem_max_rss": "91127808", "command_success": false, "process_in_blocks": "0", "process_out_blocks": "0"}
+[0m16:41:27.678930 [debug] [MainThread]: Command `dbt run` failed at 16:41:27.678880 after 0.04 seconds
+[0m16:41:27.679111 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x113130dd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x113131130>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x113130d40>]}
+[0m16:41:27.679287 [debug] [MainThread]: Flushing usage events

@@ -1,14 +1,23 @@
 {{ config(materialized="incremental", unique_key="vehicle_hkey") }}
 
-with vehicle_data as (select * from {{ ref("staging_vehicle") }})
+with
+    vehicle_data as (select * from {{ ref("staging_vehicle") }}),
+    crash_data as (select crash_id, crash_hkey from {{ ref("refined_fact_crash") }}),
+
+    vehicle_data_with_crash_hkey as (
+        select vehicle.*, crash.crash_hkey as crash_hkey
+        from vehicle_data as vehicle
+        left join crash_data as crash on vehicle.crash_id = crash.crash_id
+    )
 
 select
     {{
         dbt_utils.generate_surrogate_key(
-            ["crash_vehicle_id", "crash_id", "vehicle_id"]
+            ["crash_vehicle_id", "crash_hkey", "vehicle_id"]
         )
     }} as vehicle_hkey,
     crash_vehicle_id,
+    crash_hkey,
     crash_id,
     vehicle_id,
     unit_type,
@@ -51,4 +60,4 @@ select
     end as vehicle_maneuver,
     is_speeding,
     partition_date
-from vehicle_data
+from vehicle_data_with_crash_hkey

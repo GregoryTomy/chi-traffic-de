@@ -1,7 +1,8 @@
-# [IN PROGRESS - ] Chicago Traffic Crash Insights Dashboard
-> See [Todo](notes/todo.md) for working updates.
+# Chicago Traffic Crash Insights Dashboard
 
 I am currently working on a Data Engineering project that aims to build an interactive insights dashboard for traffic crash data in Chicago. The project leverages Google Cloud Platform (GCP) to house the data warehouse infrastructure, with orchestration managed by Apache Airflow and analytics engineering handled through dbt.
+
+[View Tableau Dashboard](https://public.tableau.com/shared/5BNTZ4Q3G?:display_count=n&:origin=viz_share_link)
 
 ## Key components:
 - **Data orchestration**: Apache Airflow pipelines for data ingestion and transformation.
@@ -11,8 +12,12 @@ I am currently working on a Data Engineering project that aims to build an inter
 
 This project focuses on providing insights into crash severity, contributing factors, and geographic distribution of incidents to aid city planners and stakeholders.
 
+
 ## Architecture
 ![](images/architecture.drawio.png)
+
+## Data Model
+![](images/datamodel.png)
 
 ## About The Data
 
