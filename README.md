@@ -4,6 +4,13 @@ Data Engineering project that orchestrates weekly ETL pipelines with Airflow to 
 
 [View Tableau Dashboard](https://public.tableau.com/shared/5BNTZ4Q3G?:display_count=n&:origin=viz_share_link)
 
+## Table of Contents
+- [Key Components](#key-components)
+- [Architecture](#architecture)
+- [Data Model](#data-model)
+- [ETL Flow](#etl-flow)
+- [Dashboard](#dashboard)
+
 ## Key components:
 - **Data orchestration**: Apache Airflow pipelines for data ingestion and transformation.
 - **Infrastructure**: Provisioned cloud resources using Terraform for reproducibility and scalability.
@@ -47,3 +54,6 @@ For downstream transformations using dbt, only the **latest partition date** is 
 
 - **Geospatial Data Processing and Loading** : Geospatial data is processed by converting it from GeoJson to newline-delimited GeoJson format, making it suitable for upload to BigQuery. A partition date column is added, and the data appended to BQ tables.
 ![](images/geo_to_gcp.png)
+
+## Dashboard
+![](images/dashboard.png)

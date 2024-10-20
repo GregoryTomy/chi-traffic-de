@@ -1,3 +1,8 @@
+# 10/20/2024
+- trigger dbt runs with airflow.
+- trigger tableau extract and dashboard update.
+- deploy in the cloud and test daily/weekly runs.
+
 # 10/15/2024
 - Switching to Looker for BI. Easier integration with BigQuery and deployment in the cloud.
 
