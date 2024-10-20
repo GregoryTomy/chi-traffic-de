@@ -16,6 +16,18 @@ Data Engineering project that orchestrates weekly ETL pipelines with Airflow to 
 ## Data Model
 ![](images/datamodel.png)
 
+### Taking a Functional Approach
+The approach taken in this project follows the principles of **Functional Data Engineering**, where all tables are time-partitioned. This means that each ETL load stores **a full snapshot of the data** at the time of the load, ensuring that the current state of the data is preserved. By storing the snapshot in Parquet format within Google Cloud Storage (GCS), we maintain an unprocessed, immutable copy of the data from each run cycle.
+
+This approach offers several advantages:
+- **Data versioning**: Every load produces a snapshot of the data at a particular point in time, allowing us to track changes or roll back to earlier states if necessary.
+- **Data integrity**: By always loading the full snapshot, the system ensures data completeness, mitigating issues like partial data ingestion.
+- **Simplified backfills**: Historical backfills become easier because all previous states are available in GCS, allowing for smooth recovery from processing failures.
+
+When the data is loaded into BigQuery, a **partition date column** is added, corresponding to the ETL run date. This partitioned data is then appended to the relevant raw tables in BigQuery. Thus, BigQuery stores a comprehensive set of raw data snapshots, each distinguished by its partition date.
+
+For downstream transformations using dbt, only the **latest partition date** is selected. This ensures that all analytics models, marts, and dashboards are built off the **most recent full snapshot of the data**, providing up-to-date insights while preserving previous states for auditability.
+
 ## ETL Flow
 
 ### General Overview
