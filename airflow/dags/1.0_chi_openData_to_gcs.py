@@ -14,28 +14,25 @@ from airflow.utils.dates import days_ago
 from airflow.providers.google.cloud.transfers.local_to_gcs import (
     LocalFilesystemToGCSOperator,
 )
+from airflow.operators.trigger_dagrun import TriggerDagRunOperator
 from google.cloud import storage
 
 # GCS Variables
 BUCKET = "chi-traffic-de-bucket"
 
-TRAFFIC_INJURY_CRASHES_URL = (
-    "https://data.cityofchicago.org/resource/85ca-t3if.csv?$limit=1000000"
-)
-TRAFFIC_INJURY_VEHICLE_URL = (
-    "https://data.cityofchicago.org/resource/68nd-jvt3.csv?$limit=2000000"
-)
-TRAFFIC_INJURY_PERSON_URL = (
-    "https://data.cityofchicago.org/resource/u6pd-qa9d.csv?$limit=2000000"
-)
+TRAFFIC_DATASETS = {
+    "crash": "https://data.cityofchicago.org/resource/85ca-t3if.csv?$limit=1000000",
+    "vehicle": "https://data.cityofchicago.org/resource/68nd-jvt3.csv?$limit=2000000",
+    "people": "https://data.cityofchicago.org/resource/u6pd-qa9d.csv?$limit=2000000",
+}
 
 
 default_args = {"owner": "duncanh", "depends_on_past": False, "retries": 1}
 
-execution_date = "{{ds_nodash}}"
+EXECUTION_DATE = "{{ds_nodash}}"
 
 with DAG(
-    "1.0_fetch_and_upload_CHI_data_v6",
+    "1.0_fetch_and_upload_CHI_data_v7",
     default_args=default_args,
     description="Fetch multiple datasets from Chicago OpenData API, store temporarily, and display row count",
     schedule_interval=None,
@@ -64,79 +61,39 @@ with DAG(
         except Exception as e:
             print(f"Failed to convert {csv_file_path} to Parquet: {str(e)}")
 
-    fetch_data_1 = PythonOperator(
-        task_id="fetch_dataset_crash",
-        python_callable=fetch_dataset,
-        provide_context=True,
-        op_kwargs={
-            "api_url": TRAFFIC_INJURY_CRASHES_URL,
-            "tmp_file_name": f"chi_traffic_crashes_{execution_date}",
-        },
+    trigger_second_dag = TriggerDagRunOperator(
+        task_id="trigger_gcs_to_gcp",
+        trigger_dag_id="2.0_export_data_from_GCS_to_GCP",
     )
 
-    fetch_data_2 = PythonOperator(
-        task_id="fetch_dataset_people",
-        python_callable=fetch_dataset,
-        provide_context=True,
-        op_kwargs={
-            "api_url": TRAFFIC_INJURY_PERSON_URL,
-            "tmp_file_name": f"chi_traffic_people_{execution_date}",
-        },
-    )
+    for dataset_name, api_url in TRAFFIC_DATASETS.items():
+        fetch_data = PythonOperator(
+            task_id=f"fetch_dataset_{dataset_name}",
+            python_callable=fetch_dataset,
+            provide_context=True,
+            op_kwargs={
+                "api_url": api_url,
+                "tmp_file_name": f"chi_traffic_{dataset_name}_{EXECUTION_DATE}",
+            },
+        )
 
-    fetch_data_3 = PythonOperator(
-        task_id="fetch_dataset_vehicle",
-        python_callable=fetch_dataset,
-        provide_context=True,
-        op_kwargs={
-            "api_url": TRAFFIC_INJURY_VEHICLE_URL,
-            "tmp_file_name": f"chi_traffic_vehicle_{execution_date}",
-        },
-    )
+        format_to_parquet = PythonOperator(
+            task_id=f"format_to_parquet_{dataset_name}",
+            python_callable=format_csv_to_parquet,
+            op_kwargs={
+                "csv_file_path": "{{ti.xcom_pull(task_ids='fetch_dataset_"
+                + dataset_name
+                + "')}}"
+            },
+        )
 
-    format_to_parquet_1 = PythonOperator(
-        task_id="format_to_parquet_crash",
-        python_callable=format_csv_to_parquet,
-        op_kwargs={"csv_file_path": "{{ti.xcom_pull(task_ids='fetch_dataset_crash')}}"},
-    )
+        upload_parquet = LocalFilesystemToGCSOperator(
+            task_id=f"upload_{dataset_name}_parquet_to_gcs",
+            src="{{ti.xcom_pull(task_ids='format_to_parquet_" + dataset_name + "')}}",
+            dst=f"traffic_data/{dataset_name}/chi_traffic_{dataset_name}_{EXECUTION_DATE}.parquet",
+            bucket=BUCKET,
+        )
 
-    format_to_parquet_2 = PythonOperator(
-        task_id="format_to_parquet_people",
-        python_callable=format_csv_to_parquet,
-        op_kwargs={
-            "csv_file_path": "{{ti.xcom_pull(task_ids='fetch_dataset_people')}}"
-        },
-    )
+        fetch_data >> format_to_parquet >> upload_parquet
 
-    format_to_parquet_3 = PythonOperator(
-        task_id="format_to_parquet_vehicle",
-        python_callable=format_csv_to_parquet,
-        op_kwargs={
-            "csv_file_path": "{{ti.xcom_pull(task_ids='fetch_dataset_vehicle')}}"
-        },
-    )
-
-    upload_parquet_crash = LocalFilesystemToGCSOperator(
-        task_id="upload_crash_parquet_to_gcs",
-        src="{{ti.xcom_pull(task_ids='format_to_parquet_crash')}}",
-        dst=f"traffic_data/crash/chi_traffic_crash_{execution_date}.parquet",
-        bucket=BUCKET,
-    )
-
-    upload_parquet_people = LocalFilesystemToGCSOperator(
-        task_id="upload_people_parquet_to_gcs",
-        src="{{ti.xcom_pull(task_ids='format_to_parquet_people')}}",
-        dst=f"traffic_data/people/chi_traffic_people_{execution_date}.parquet",
-        bucket=BUCKET,
-    )
-
-    upload_parquet_vehicle = LocalFilesystemToGCSOperator(
-        task_id="upload_vehicle_parquet_to_gcs",
-        src="{{ti.xcom_pull(task_ids='format_to_parquet_vehicle')}}",
-        dst=f"traffic_data/vehicle/chi_traffic_vehicle_{execution_date}.parquet",
-        bucket=BUCKET,
-    )
-
-    (fetch_data_1 >> format_to_parquet_1 >> upload_parquet_crash)
-    (fetch_data_2 >> format_to_parquet_2 >> upload_parquet_people)
-    (fetch_data_3 >> format_to_parquet_3 >> upload_parquet_vehicle)
+    [upload_parquet for datset_name in TRAFFIC_DATASETS] >> trigger_second_dag

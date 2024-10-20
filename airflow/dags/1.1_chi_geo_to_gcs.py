@@ -10,6 +10,7 @@ from airflow.utils.dates import days_ago
 from airflow.providers.google.cloud.transfers.local_to_gcs import (
     LocalFilesystemToGCSOperator,
 )
+from airflow.operators.trigger_dagrun import TriggerDagRunOperator
 from google.cloud import storage
 
 # GCS Variables
@@ -44,6 +45,11 @@ with DAG(
                 f"Failed to fetch data from {api_url}: {response.status_code}"
             )
 
+    trigger_second_dag = TriggerDagRunOperator(
+        task_id="trigger_geo_gcs_to_gcp",
+        trigger_dag_id="2.1_export_geojson_data_from_GCS_to_GCP",
+    )
+
     for dataset_name, api_url in GEOJSON_DATASETS.items():
         fetch_data = PythonOperator(
             task_id=f"fetch_geojson_{dataset_name}",
@@ -63,3 +69,5 @@ with DAG(
         )
 
         fetch_data >> upload_data
+
+    [upload_data for dataset_name in GEOJSON_DATASETS] >> trigger_second_dag

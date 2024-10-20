@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8' ?>
 
 <!-- build 20241.24.0705.0334                               -->
-<workbook original-version='18.1' source-build='2024.1.5 (20241.24.0705.0334)' source-platform='mac' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+<workbook original-version='18.1' source-build='2024.1.5 (20241.24.0705.0334)' source-platform='mac' version='18.1' xml:base='https://public.tableau.com' xmlns:user='http://www.tableausoftware.com/xml/user'>
   <document-format-change-manifest>
     <_.fcp.AccessibleZoneTabOrder.true...AccessibleZoneTabOrder />
     <_.fcp.AnimationOnByDefault.true...AnimationOnByDefault />
@@ -24,7 +24,9 @@
     <WorksheetBackgroundTransparency />
     <ZoneBackgroundTransparency />
     <ZoneFriendlyName />
+    <ZoneVisibilityControl />
   </document-format-change-manifest>
+  <repository-location id='ChicagoTrafficCrashInsights' path='/workbooks' revision='1.0' />
   <preferences>
     <preference name='ui.encoding.shelf.height' value='24' />
     <preference name='ui.shelf.height' value='26' />
@@ -191,307 +193,14 @@
         </members>
       </column>
     </datasource>
-    <datasource caption='Boundaries - Neighborhoods' inline='true' name='federated.18eu20i14s5nn81cqlcd80shmq11' version='18.1'>
-      <connection class='federated'>
-        <named-connections>
-          <named-connection caption='Boundaries - Neighborhoods' name='ogrdirect.04s5ipd0wf1wp1130bgvj1qv465t'>
-            <connection class='ogrdirect' directory='/Users/gregorytomy/chi_traffic/tableau/maps' filename='Boundaries - Neighborhoods.geojson' password='' server='' tablename='' />
-          </named-connection>
-        </named-connections>
-        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='ogrdirect.04s5ipd0wf1wp1130bgvj1qv465t' name='Boundaries - Neighborhoods.geojson' table='[Boundaries - Neighborhoods.geojson]' type='table'>
-          <columns>
-            <column datatype='string' name='pri_neigh' ordinal='0' />
-            <column datatype='string' name='sec_neigh' ordinal='1' />
-            <column datatype='string' name='shape_area' ordinal='2' />
-            <column datatype='string' name='shape_len' ordinal='3' />
-            <column datatype='spatial' name='Geometry' ordinal='4' />
-          </columns>
-        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
-        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='ogrdirect.04s5ipd0wf1wp1130bgvj1qv465t' name='Boundaries - Neighborhoods.geojson' table='[Boundaries - Neighborhoods.geojson]' type='table'>
-          <columns>
-            <column datatype='string' name='pri_neigh' ordinal='0' />
-            <column datatype='string' name='sec_neigh' ordinal='1' />
-            <column datatype='string' name='shape_area' ordinal='2' />
-            <column datatype='string' name='shape_len' ordinal='3' />
-            <column datatype='spatial' name='Geometry' ordinal='4' />
-          </columns>
-        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
-        <metadata-records>
-          <metadata-record class='column'>
-            <remote-name>pri_neigh</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[pri_neigh]</local-name>
-            <parent-name>[Boundaries - Neighborhoods.geojson]</parent-name>
-            <remote-alias>pri_neigh</remote-alias>
-            <ordinal>0</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='binary' />
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Neighborhoods.geojson_A21D80D63F0F4F7EBF16C763AE1991C8]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>sec_neigh</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[sec_neigh]</local-name>
-            <parent-name>[Boundaries - Neighborhoods.geojson]</parent-name>
-            <remote-alias>sec_neigh</remote-alias>
-            <ordinal>1</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='binary' />
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Neighborhoods.geojson_A21D80D63F0F4F7EBF16C763AE1991C8]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>shape_area</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[shape_area]</local-name>
-            <parent-name>[Boundaries - Neighborhoods.geojson]</parent-name>
-            <remote-alias>shape_area</remote-alias>
-            <ordinal>2</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='binary' />
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Neighborhoods.geojson_A21D80D63F0F4F7EBF16C763AE1991C8]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>shape_len</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[shape_len]</local-name>
-            <parent-name>[Boundaries - Neighborhoods.geojson]</parent-name>
-            <remote-alias>shape_len</remote-alias>
-            <ordinal>3</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='binary' />
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Neighborhoods.geojson_A21D80D63F0F4F7EBF16C763AE1991C8]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Geometry</remote-name>
-            <remote-type>8</remote-type>
-            <local-name>[Geometry]</local-name>
-            <parent-name>[Boundaries - Neighborhoods.geojson]</parent-name>
-            <remote-alias>Geometry</remote-alias>
-            <ordinal>4</ordinal>
-            <local-type>spatial</local-type>
-            <aggregation>Collect</aggregation>
-            <contains-null>true</contains-null>
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Neighborhoods.geojson_A21D80D63F0F4F7EBF16C763AE1991C8]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-        </metadata-records>
-      </connection>
-      <aliases enabled='yes' />
-      <column caption='Neighborhood' datatype='string' name='[Calculation_3917990942688944164]' role='dimension' type='nominal'>
-        <calculation class='tableau' formula='UPPER([pri_neigh])' />
-      </column>
-      <_.fcp.ObjectModelTableType.true...column caption='Boundaries - Neighborhoods.geojson' datatype='table' name='[__tableau_internal_object_id__].[Boundaries - Neighborhoods.geojson_A21D80D63F0F4F7EBF16C763AE1991C8]' role='measure' type='quantitative' />
-      <column caption='Pri Neigh' datatype='string' name='[pri_neigh]' role='dimension' type='nominal' />
-      <column caption='Sec Neigh' datatype='string' name='[sec_neigh]' role='dimension' type='nominal' />
-      <column caption='Shape Area' datatype='string' name='[shape_area]' role='dimension' type='nominal' />
-      <column caption='Shape Len' datatype='string' name='[shape_len]' role='dimension' type='nominal' />
-      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
-      <semantic-values>
-        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
-      </semantic-values>
-      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
-        <objects>
-          <object caption='Boundaries - Neighborhoods.geojson' id='Boundaries - Neighborhoods.geojson_A21D80D63F0F4F7EBF16C763AE1991C8'>
-            <properties context=''>
-              <relation connection='ogrdirect.04s5ipd0wf1wp1130bgvj1qv465t' name='Boundaries - Neighborhoods.geojson' table='[Boundaries - Neighborhoods.geojson]' type='table'>
-                <columns>
-                  <column datatype='string' name='pri_neigh' ordinal='0' />
-                  <column datatype='string' name='sec_neigh' ordinal='1' />
-                  <column datatype='string' name='shape_area' ordinal='2' />
-                  <column datatype='string' name='shape_len' ordinal='3' />
-                  <column datatype='spatial' name='Geometry' ordinal='4' />
-                </columns>
-              </relation>
-            </properties>
-          </object>
-        </objects>
-      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
-    </datasource>
-    <datasource caption='Boundaries - Wards (2023-)_20241015' inline='true' name='federated.1d4igjr1dw129o12oih8j1fq89nx' version='18.1'>
-      <connection class='federated'>
-        <named-connections>
-          <named-connection caption='Boundaries - Wards (2023-)_20241015' name='ogrdirect.0ikvbo81nzg4zd1cau86y0745a9e'>
-            <connection class='ogrdirect' directory='/Users/gregorytomy/chi_traffic/tableau/maps' filename='Boundaries - Wards (2023-)_20241015.geojson' password='' server='' tablename='' />
-          </named-connection>
-        </named-connections>
-        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='ogrdirect.0ikvbo81nzg4zd1cau86y0745a9e' name='Boundaries - Wards (2023-)_20241015.geojson' table='[Boundaries - Wards (2023-)_20241015.geojson]' type='table'>
-          <columns>
-            <column datatype='string' name='ward_id' ordinal='0' />
-            <column datatype='string' name='st_area_sh' ordinal='1' />
-            <column datatype='string' name='st_length_' ordinal='2' />
-            <column datatype='datetime' name='edit_date' ordinal='3' />
-            <column datatype='string' name='objectid' ordinal='4' />
-            <column datatype='string' name='globalid' ordinal='5' />
-            <column datatype='string' name='ward' ordinal='6' />
-            <column datatype='spatial' name='Geometry' ordinal='7' />
-          </columns>
-        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
-        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='ogrdirect.0ikvbo81nzg4zd1cau86y0745a9e' name='Boundaries - Wards (2023-)_20241015.geojson' table='[Boundaries - Wards (2023-)_20241015.geojson]' type='table'>
-          <columns>
-            <column datatype='string' name='ward_id' ordinal='0' />
-            <column datatype='string' name='st_area_sh' ordinal='1' />
-            <column datatype='string' name='st_length_' ordinal='2' />
-            <column datatype='datetime' name='edit_date' ordinal='3' />
-            <column datatype='string' name='objectid' ordinal='4' />
-            <column datatype='string' name='globalid' ordinal='5' />
-            <column datatype='string' name='ward' ordinal='6' />
-            <column datatype='spatial' name='Geometry' ordinal='7' />
-          </columns>
-        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
-        <metadata-records>
-          <metadata-record class='column'>
-            <remote-name>ward_id</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[ward_id]</local-name>
-            <parent-name>[Boundaries - Wards (2023-)_20241015.geojson]</parent-name>
-            <remote-alias>ward_id</remote-alias>
-            <ordinal>0</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='binary' />
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>st_area_sh</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[st_area_sh]</local-name>
-            <parent-name>[Boundaries - Wards (2023-)_20241015.geojson]</parent-name>
-            <remote-alias>st_area_sh</remote-alias>
-            <ordinal>1</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='binary' />
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>st_length_</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[st_length_]</local-name>
-            <parent-name>[Boundaries - Wards (2023-)_20241015.geojson]</parent-name>
-            <remote-alias>st_length_</remote-alias>
-            <ordinal>2</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='binary' />
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>edit_date</remote-name>
-            <remote-type>135</remote-type>
-            <local-name>[edit_date]</local-name>
-            <parent-name>[Boundaries - Wards (2023-)_20241015.geojson]</parent-name>
-            <remote-alias>edit_date</remote-alias>
-            <ordinal>3</ordinal>
-            <local-type>datetime</local-type>
-            <aggregation>Year</aggregation>
-            <contains-null>true</contains-null>
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>objectid</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[objectid]</local-name>
-            <parent-name>[Boundaries - Wards (2023-)_20241015.geojson]</parent-name>
-            <remote-alias>objectid</remote-alias>
-            <ordinal>4</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='binary' />
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>globalid</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[globalid]</local-name>
-            <parent-name>[Boundaries - Wards (2023-)_20241015.geojson]</parent-name>
-            <remote-alias>globalid</remote-alias>
-            <ordinal>5</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='binary' />
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>ward</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[ward]</local-name>
-            <parent-name>[Boundaries - Wards (2023-)_20241015.geojson]</parent-name>
-            <remote-alias>ward</remote-alias>
-            <ordinal>6</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='binary' />
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Geometry</remote-name>
-            <remote-type>8</remote-type>
-            <local-name>[Geometry]</local-name>
-            <parent-name>[Boundaries - Wards (2023-)_20241015.geojson]</parent-name>
-            <remote-alias>Geometry</remote-alias>
-            <ordinal>7</ordinal>
-            <local-type>spatial</local-type>
-            <aggregation>Collect</aggregation>
-            <contains-null>true</contains-null>
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-        </metadata-records>
-      </connection>
-      <aliases enabled='yes' />
-      <_.fcp.ObjectModelTableType.true...column caption='Boundaries - Wards (2023-)_20241015.geojson' datatype='table' name='[__tableau_internal_object_id__].[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]' role='measure' type='quantitative' />
-      <column caption='Edit Date' datatype='datetime' name='[edit_date]' role='dimension' type='ordinal' />
-      <column caption='Globalid' datatype='string' name='[globalid]' role='dimension' type='nominal' />
-      <column caption='Objectid' datatype='string' name='[objectid]' role='dimension' type='nominal' />
-      <column caption='St Area Sh' datatype='string' name='[st_area_sh]' role='dimension' type='nominal' />
-      <column caption='St Length' datatype='string' name='[st_length_]' role='dimension' type='nominal' />
-      <column caption='Ward' datatype='string' name='[ward]' role='dimension' type='nominal' />
-      <column caption='Ward Id' datatype='string' name='[ward_id]' role='dimension' type='nominal' />
-      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
-      <semantic-values>
-        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
-      </semantic-values>
-      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
-        <objects>
-          <object caption='Boundaries - Wards (2023-)_20241015.geojson' id='Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E'>
-            <properties context=''>
-              <relation connection='ogrdirect.0ikvbo81nzg4zd1cau86y0745a9e' name='Boundaries - Wards (2023-)_20241015.geojson' table='[Boundaries - Wards (2023-)_20241015.geojson]' type='table'>
-                <columns>
-                  <column datatype='string' name='ward_id' ordinal='0' />
-                  <column datatype='string' name='st_area_sh' ordinal='1' />
-                  <column datatype='string' name='st_length_' ordinal='2' />
-                  <column datatype='datetime' name='edit_date' ordinal='3' />
-                  <column datatype='string' name='objectid' ordinal='4' />
-                  <column datatype='string' name='globalid' ordinal='5' />
-                  <column datatype='string' name='ward' ordinal='6' />
-                  <column datatype='spatial' name='Geometry' ordinal='7' />
-                </columns>
-              </relation>
-            </properties>
-          </object>
-        </objects>
-      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
-    </datasource>
     <datasource caption='Crash Data' inline='true' name='federated.14y6cxz0pbabfy19iy9z70elmyz3' version='18.1'>
       <connection class='federated'>
         <named-connections>
           <named-connection caption='BigQuery' name='bigquery.0i9uneh0kazdgv17t0p3p1a7kvf8'>
-            <connection CATALOG='sf-traffic-de' EXECCATALOG='sf-traffic-de' authentication='oauth' class='bigquery' connection-dialect='google-sql' project='chi-traffic-de' schema='chi_traffic_mart' server-oauth='' username='gregoryntomy@gmail.com' />
+            <connection CATALOG='sf-traffic-de' EXECCATALOG='sf-traffic-de' authentication='oauth' class='bigquery' connection-dialect='google-sql' project='chi-traffic-de' schema='chi_traffic_mart' server-oauth='' username='gregoryntomy@gmail.com' workgroup-auth-mode='as-is' />
           </named-connection>
           <named-connection caption='Boundaries - Neighborhoods' name='ogrdirect.0tsg4071cbudqj12wzalq0je6muo'>
-            <connection class='ogrdirect' directory='/Users/gregorytomy/chi_traffic/tableau/maps' filename='Boundaries - Neighborhoods.geojson' password='' server='' tablename='' />
+            <connection class='ogrdirect' directory='/Users/gregorytomy/chi_traffic/tableau/maps' filename='Boundaries - Neighborhoods.geojson' password='' server='' tablename='' workgroup-auth-mode='as-is' />
           </named-connection>
         </named-connections>
         <_.fcp.ObjectModelEncapsulateLegacy.false...relation join='right' type='join'>
@@ -1377,7 +1086,6 @@
               <approx-count>98</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='binary' />
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>sec_neigh</remote-name>
@@ -1392,7 +1100,6 @@
               <approx-count>78</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='binary' />
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>shape_area</remote-name>
@@ -1407,7 +1114,6 @@
               <approx-count>98</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='binary' />
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>crash_hkey</remote-name>
@@ -1422,7 +1128,6 @@
               <approx-count>875266</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='binary' />
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>shape_len</remote-name>
@@ -1437,7 +1142,6 @@
               <approx-count>98</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='binary' />
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>Geometry</remote-name>
@@ -1451,7 +1155,6 @@
               <aggregation>Collect</aggregation>
               <approx-count>98</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>crash_id</remote-name>
@@ -1466,7 +1169,6 @@
               <approx-count>875266</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='binary' />
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>first_crash_type_code</remote-name>
@@ -1481,7 +1183,6 @@
               <approx-count>17</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='binary' />
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>crash_severity_code</remote-name>
@@ -1496,7 +1197,6 @@
               <approx-count>2</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='binary' />
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>total_injuries_number</remote-name>
@@ -1510,7 +1210,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>12</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>total_fatal_injuries_number</remote-name>
@@ -1524,7 +1223,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>3</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>weather_condition_code</remote-name>
@@ -1539,7 +1237,6 @@
               <approx-count>16</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='binary' />
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>lighting_condition_code</remote-name>
@@ -1554,7 +1251,6 @@
               <approx-count>6</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='binary' />
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>is_intersection_related</remote-name>
@@ -1568,7 +1264,6 @@
               <aggregation>Count</aggregation>
               <approx-count>3</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>is_hit_and_run</remote-name>
@@ -1582,7 +1277,6 @@
               <aggregation>Count</aggregation>
               <approx-count>3</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>is_work_zone</remote-name>
@@ -1596,7 +1290,6 @@
               <aggregation>Count</aggregation>
               <approx-count>3</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>is_workers_present</remote-name>
@@ -1610,7 +1303,6 @@
               <aggregation>Count</aggregation>
               <approx-count>3</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>is_dooring_related</remote-name>
@@ -1624,7 +1316,6 @@
               <aggregation>Count</aggregation>
               <approx-count>3</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>crash_speed_limit</remote-name>
@@ -1638,7 +1329,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>20</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>roadway_surface_condition_code</remote-name>
@@ -1653,7 +1343,6 @@
               <approx-count>7</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='binary' />
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>is_road_defect</remote-name>
@@ -1667,7 +1356,6 @@
               <aggregation>Count</aggregation>
               <approx-count>3</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>damage_level_code</remote-name>
@@ -1682,7 +1370,6 @@
               <approx-count>3</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='binary' />
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>primary_cause_explanation</remote-name>
@@ -1697,7 +1384,6 @@
               <approx-count>45</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='binary' />
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>date_hkey1</remote-name>
@@ -1712,7 +1398,6 @@
               <approx-count>681247</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='binary' />
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>location_hkey1</remote-name>
@@ -1727,7 +1412,6 @@
               <approx-count>190226</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='binary' />
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>partition_date</remote-name>
@@ -1741,7 +1425,6 @@
               <aggregation>Year</aggregation>
               <approx-count>1</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>location_hkey</remote-name>
@@ -1756,7 +1439,6 @@
               <approx-count>190226</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='binary' />
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>longitude</remote-name>
@@ -1770,7 +1452,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>190226</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>latitude</remote-name>
@@ -1784,7 +1465,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>190226</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>ward_hkey</remote-name>
@@ -1799,7 +1479,6 @@
               <approx-count>62</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='binary' />
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>ward_id</remote-name>
@@ -1813,7 +1492,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>62</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>neighborhood_hkey</remote-name>
@@ -1828,7 +1506,6 @@
               <approx-count>98</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='binary' />
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>neighborhood</remote-name>
@@ -1843,7 +1520,6 @@
               <approx-count>98</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='binary' />
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>date_hkey</remote-name>
@@ -1858,7 +1534,6 @@
               <approx-count>681247</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='binary' />
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>crash_datetime</remote-name>
@@ -1872,7 +1547,6 @@
               <aggregation>Year</aggregation>
               <approx-count>681247</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>year</remote-name>
@@ -1886,7 +1560,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>10</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>month</remote-name>
@@ -1900,7 +1573,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>12</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>quarter</remote-name>
@@ -1914,7 +1586,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>4</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>week</remote-name>
@@ -1928,7 +1599,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>65</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>day</remote-name>
@@ -1942,7 +1612,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>31</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>day_of_week</remote-name>
@@ -1956,7 +1625,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>7</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>hour</remote-name>
@@ -1970,7 +1638,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>24</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>is_weekend</remote-name>
@@ -1984,7 +1651,6 @@
               <aggregation>Count</aggregation>
               <approx-count>2</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>is_winter</remote-name>
@@ -1998,7 +1664,6 @@
               <aggregation>Count</aggregation>
               <approx-count>2</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>is_rush_hour</remote-name>
@@ -2012,7 +1677,6 @@
               <aggregation>Count</aggregation>
               <approx-count>2</approx-count>
               <contains-null>true</contains-null>
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[fact_crash_07158B26096D487DB4464F2C97F0D725]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
           </metadata-records>
         </connection>
@@ -2020,34 +1684,6 @@
       <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' _.fcp.SchemaViewerObjectModel.true...common-percentage='0.921544' _.fcp.SchemaViewerObjectModel.true...user-set-layout-v2='true' dim-ordering='alphabetic' measure-ordering='alphabetic' parameter-percentage='0.0784558' show-structure='true' />
       <style>
         <style-rule element='mark'>
-          <encoding attr='color' field='[usr:Calculation_3917990942669979682:nk]' type='palette'>
-            <map to='#1da2d0'>
-              <bucket>&quot;above&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
-              <bucket>&quot;Above&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>&quot;Below&quot;</bucket>
-            </map>
-            <map to='#ff5500'>
-              <bucket>&quot;below&quot;</bucket>
-            </map>
-          </encoding>
-          <encoding attr='color' field='[usr:KPI Crash Avg (copy)_3917990942671159331:nk]' type='palette'>
-            <map to='#1da2d0'>
-              <bucket>&quot;above&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
-              <bucket>&quot;Above&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>&quot;Below&quot;</bucket>
-            </map>
-            <map to='#ff5500'>
-              <bucket>&quot;below&quot;</bucket>
-            </map>
-          </encoding>
           <encoding attr='color' field='[:Measure Names]' type='palette'>
             <map to='#49525e'>
               <bucket>&quot;[federated.14y6cxz0pbabfy19iy9z70elmyz3].[sum:PY Crash (copy)_3917990942317654021:qk]&quot;</bucket>
@@ -2078,6 +1714,34 @@
             </map>
             <map to='#f28e2b'>
               <bucket>&quot;[federated.14y6cxz0pbabfy19iy9z70elmyz3].[usr:Min/Max Injuries (copy)_3917990942341640215:qk]&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[usr:Calculation_3917990942669979682:nk]' type='palette'>
+            <map to='#1da2d0'>
+              <bucket>&quot;above&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Above&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Below&quot;</bucket>
+            </map>
+            <map to='#ff5500'>
+              <bucket>&quot;below&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[usr:KPI Crash Avg (copy)_3917990942671159331:nk]' type='palette'>
+            <map to='#1da2d0'>
+              <bucket>&quot;above&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Above&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Below&quot;</bucket>
+            </map>
+            <map to='#ff5500'>
+              <bucket>&quot;below&quot;</bucket>
             </map>
           </encoding>
         </style-rule>
@@ -2194,6 +1858,521 @@
                     <column datatype='spatial' name='Geometry' ordinal='4' />
                   </columns>
                 </relation>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+    <datasource caption='Boundaries - Neighborhoods' inline='true' name='federated.18eu20i14s5nn81cqlcd80shmq11' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='Boundaries - Neighborhoods' name='ogrdirect.04s5ipd0wf1wp1130bgvj1qv465t'>
+            <connection class='ogrdirect' directory='/Users/gregorytomy/chi_traffic/tableau/maps' filename='Boundaries - Neighborhoods.geojson' password='' server='' tablename='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='ogrdirect.04s5ipd0wf1wp1130bgvj1qv465t' name='Boundaries - Neighborhoods.geojson' table='[Boundaries - Neighborhoods.geojson]' type='table'>
+          <columns>
+            <column datatype='string' name='pri_neigh' ordinal='0' />
+            <column datatype='string' name='sec_neigh' ordinal='1' />
+            <column datatype='string' name='shape_area' ordinal='2' />
+            <column datatype='string' name='shape_len' ordinal='3' />
+            <column datatype='spatial' name='Geometry' ordinal='4' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='ogrdirect.04s5ipd0wf1wp1130bgvj1qv465t' name='Boundaries - Neighborhoods.geojson' table='[Boundaries - Neighborhoods.geojson]' type='table'>
+          <columns>
+            <column datatype='string' name='pri_neigh' ordinal='0' />
+            <column datatype='string' name='sec_neigh' ordinal='1' />
+            <column datatype='string' name='shape_area' ordinal='2' />
+            <column datatype='string' name='shape_len' ordinal='3' />
+            <column datatype='spatial' name='Geometry' ordinal='4' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <refresh increment-key='' incremental-refresh-mode='' incremental-updates='' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>pri_neigh</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[pri_neigh]</local-name>
+            <parent-name>[Boundaries - Neighborhoods.geojson]</parent-name>
+            <remote-alias>pri_neigh</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Neighborhoods.geojson_A21D80D63F0F4F7EBF16C763AE1991C8]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sec_neigh</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[sec_neigh]</local-name>
+            <parent-name>[Boundaries - Neighborhoods.geojson]</parent-name>
+            <remote-alias>sec_neigh</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Neighborhoods.geojson_A21D80D63F0F4F7EBF16C763AE1991C8]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>shape_area</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[shape_area]</local-name>
+            <parent-name>[Boundaries - Neighborhoods.geojson]</parent-name>
+            <remote-alias>shape_area</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Neighborhoods.geojson_A21D80D63F0F4F7EBF16C763AE1991C8]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>shape_len</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[shape_len]</local-name>
+            <parent-name>[Boundaries - Neighborhoods.geojson]</parent-name>
+            <remote-alias>shape_len</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Neighborhoods.geojson_A21D80D63F0F4F7EBF16C763AE1991C8]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Geometry</remote-name>
+            <remote-type>8</remote-type>
+            <local-name>[Geometry]</local-name>
+            <parent-name>[Boundaries - Neighborhoods.geojson]</parent-name>
+            <remote-alias>Geometry</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>spatial</local-type>
+            <aggregation>Collect</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Neighborhoods.geojson_A21D80D63F0F4F7EBF16C763AE1991C8]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Neighborhood' datatype='string' name='[Calculation_3917990942688944164]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='UPPER([pri_neigh])' />
+      </column>
+      <_.fcp.ObjectModelTableType.true...column caption='Boundaries - Neighborhoods.geojson' datatype='table' name='[__tableau_internal_object_id__].[Boundaries - Neighborhoods.geojson_A21D80D63F0F4F7EBF16C763AE1991C8]' role='measure' type='quantitative' />
+      <column caption='Pri Neigh' datatype='string' name='[pri_neigh]' role='dimension' type='nominal' />
+      <column caption='Sec Neigh' datatype='string' name='[sec_neigh]' role='dimension' type='nominal' />
+      <column caption='Shape Area' datatype='string' name='[shape_area]' role='dimension' type='nominal' />
+      <column caption='Shape Len' datatype='string' name='[shape_len]' role='dimension' type='nominal' />
+      <extract _.fcp.ObjectModelExtractV2.true...object-id='' _.fcp.VConnDownstreamExtractsWithWarnings.true...user-specific='false' count='-1' enabled='true' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='/Users/gregorytomy/chi_traffic/tableau/extracts/Boundaries - Neighborhoods.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='10/18/2024 07:36:13 PM' username='tableau_internal_user'>
+          <_.fcp.ObjectModelEncapsulateLegacy.false...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <refresh increment-key='' incremental-refresh-mode='' incremental-updates=''>
+            <refresh-event add-from-file-path='Boundaries - Neighborhoods' increment-value='%null%' refresh-type='create' rows-inserted='98' timestamp-start='2024-10-18 19:36:13.592' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>pri_neigh</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[pri_neigh]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>pri_neigh</remote-alias>
+              <ordinal>0</ordinal>
+              <family>Boundaries - Neighborhoods.geojson</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>98</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Neighborhoods.geojson_A21D80D63F0F4F7EBF16C763AE1991C8]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>sec_neigh</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[sec_neigh]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>sec_neigh</remote-alias>
+              <ordinal>1</ordinal>
+              <family>Boundaries - Neighborhoods.geojson</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>78</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Neighborhoods.geojson_A21D80D63F0F4F7EBF16C763AE1991C8]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>shape_area</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[shape_area]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>shape_area</remote-alias>
+              <ordinal>2</ordinal>
+              <family>Boundaries - Neighborhoods.geojson</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>98</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Neighborhoods.geojson_A21D80D63F0F4F7EBF16C763AE1991C8]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>shape_len</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[shape_len]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>shape_len</remote-alias>
+              <ordinal>3</ordinal>
+              <family>Boundaries - Neighborhoods.geojson</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>98</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Neighborhoods.geojson_A21D80D63F0F4F7EBF16C763AE1991C8]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Geometry</remote-name>
+              <remote-type>128</remote-type>
+              <local-name>[Geometry]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Geometry</remote-alias>
+              <ordinal>4</ordinal>
+              <family>Boundaries - Neighborhoods.geojson</family>
+              <local-type>spatial</local-type>
+              <aggregation>Collect</aggregation>
+              <approx-count>98</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Neighborhoods.geojson_A21D80D63F0F4F7EBF16C763AE1991C8]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='Boundaries - Neighborhoods.geojson' id='Boundaries - Neighborhoods.geojson_A21D80D63F0F4F7EBF16C763AE1991C8'>
+            <properties context=''>
+              <relation connection='ogrdirect.04s5ipd0wf1wp1130bgvj1qv465t' name='Boundaries - Neighborhoods.geojson' table='[Boundaries - Neighborhoods.geojson]' type='table'>
+                <columns>
+                  <column datatype='string' name='pri_neigh' ordinal='0' />
+                  <column datatype='string' name='sec_neigh' ordinal='1' />
+                  <column datatype='string' name='shape_area' ordinal='2' />
+                  <column datatype='string' name='shape_len' ordinal='3' />
+                  <column datatype='spatial' name='Geometry' ordinal='4' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+    <datasource caption='Boundaries - Wards (2023-)_20241015' inline='true' name='federated.1d4igjr1dw129o12oih8j1fq89nx' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='Boundaries - Wards (2023-)_20241015' name='ogrdirect.0ikvbo81nzg4zd1cau86y0745a9e'>
+            <connection class='ogrdirect' directory='/Users/gregorytomy/chi_traffic/tableau/maps' filename='Boundaries - Wards (2023-)_20241015.geojson' password='' server='' tablename='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='ogrdirect.0ikvbo81nzg4zd1cau86y0745a9e' name='Boundaries - Wards (2023-)_20241015.geojson' table='[Boundaries - Wards (2023-)_20241015.geojson]' type='table'>
+          <columns>
+            <column datatype='string' name='ward_id' ordinal='0' />
+            <column datatype='string' name='st_area_sh' ordinal='1' />
+            <column datatype='string' name='st_length_' ordinal='2' />
+            <column datatype='datetime' name='edit_date' ordinal='3' />
+            <column datatype='string' name='objectid' ordinal='4' />
+            <column datatype='string' name='globalid' ordinal='5' />
+            <column datatype='string' name='ward' ordinal='6' />
+            <column datatype='spatial' name='Geometry' ordinal='7' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='ogrdirect.0ikvbo81nzg4zd1cau86y0745a9e' name='Boundaries - Wards (2023-)_20241015.geojson' table='[Boundaries - Wards (2023-)_20241015.geojson]' type='table'>
+          <columns>
+            <column datatype='string' name='ward_id' ordinal='0' />
+            <column datatype='string' name='st_area_sh' ordinal='1' />
+            <column datatype='string' name='st_length_' ordinal='2' />
+            <column datatype='datetime' name='edit_date' ordinal='3' />
+            <column datatype='string' name='objectid' ordinal='4' />
+            <column datatype='string' name='globalid' ordinal='5' />
+            <column datatype='string' name='ward' ordinal='6' />
+            <column datatype='spatial' name='Geometry' ordinal='7' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <refresh increment-key='' incremental-refresh-mode='' incremental-updates='' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>ward_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[ward_id]</local-name>
+            <parent-name>[Boundaries - Wards (2023-)_20241015.geojson]</parent-name>
+            <remote-alias>ward_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>st_area_sh</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[st_area_sh]</local-name>
+            <parent-name>[Boundaries - Wards (2023-)_20241015.geojson]</parent-name>
+            <remote-alias>st_area_sh</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>st_length_</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[st_length_]</local-name>
+            <parent-name>[Boundaries - Wards (2023-)_20241015.geojson]</parent-name>
+            <remote-alias>st_length_</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>edit_date</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[edit_date]</local-name>
+            <parent-name>[Boundaries - Wards (2023-)_20241015.geojson]</parent-name>
+            <remote-alias>edit_date</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>objectid</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[objectid]</local-name>
+            <parent-name>[Boundaries - Wards (2023-)_20241015.geojson]</parent-name>
+            <remote-alias>objectid</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>globalid</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[globalid]</local-name>
+            <parent-name>[Boundaries - Wards (2023-)_20241015.geojson]</parent-name>
+            <remote-alias>globalid</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ward</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[ward]</local-name>
+            <parent-name>[Boundaries - Wards (2023-)_20241015.geojson]</parent-name>
+            <remote-alias>ward</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Geometry</remote-name>
+            <remote-type>8</remote-type>
+            <local-name>[Geometry]</local-name>
+            <parent-name>[Boundaries - Wards (2023-)_20241015.geojson]</parent-name>
+            <remote-alias>Geometry</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>spatial</local-type>
+            <aggregation>Collect</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <_.fcp.ObjectModelTableType.true...column caption='Boundaries - Wards (2023-)_20241015.geojson' datatype='table' name='[__tableau_internal_object_id__].[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]' role='measure' type='quantitative' />
+      <column caption='Edit Date' datatype='datetime' name='[edit_date]' role='dimension' type='ordinal' />
+      <column caption='Globalid' datatype='string' name='[globalid]' role='dimension' type='nominal' />
+      <column caption='Objectid' datatype='string' name='[objectid]' role='dimension' type='nominal' />
+      <column caption='St Area Sh' datatype='string' name='[st_area_sh]' role='dimension' type='nominal' />
+      <column caption='St Length' datatype='string' name='[st_length_]' role='dimension' type='nominal' />
+      <column caption='Ward' datatype='string' name='[ward]' role='dimension' type='nominal' />
+      <column caption='Ward Id' datatype='string' name='[ward_id]' role='dimension' type='nominal' />
+      <extract _.fcp.ObjectModelExtractV2.true...object-id='' _.fcp.VConnDownstreamExtractsWithWarnings.true...user-specific='false' count='-1' enabled='true' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='/Users/gregorytomy/chi_traffic/tableau/extracts/Boundaries - Wards (2023-)_20241015.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='10/18/2024 07:36:25 PM' username='tableau_internal_user'>
+          <_.fcp.ObjectModelEncapsulateLegacy.false...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <refresh increment-key='' incremental-refresh-mode='' incremental-updates=''>
+            <refresh-event add-from-file-path='Boundaries - Wards (2023-)_20241015' increment-value='%null%' refresh-type='create' rows-inserted='50' timestamp-start='2024-10-18 19:36:25.169' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>ward_id</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[ward_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>ward_id</remote-alias>
+              <ordinal>0</ordinal>
+              <family>Boundaries - Wards (2023-)_20241015.geojson</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>50</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>st_area_sh</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[st_area_sh]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>st_area_sh</remote-alias>
+              <ordinal>1</ordinal>
+              <family>Boundaries - Wards (2023-)_20241015.geojson</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>50</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>st_length_</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[st_length_]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>st_length_</remote-alias>
+              <ordinal>2</ordinal>
+              <family>Boundaries - Wards (2023-)_20241015.geojson</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>50</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>edit_date</remote-name>
+              <remote-type>135</remote-type>
+              <local-name>[edit_date]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>edit_date</remote-alias>
+              <ordinal>3</ordinal>
+              <family>Boundaries - Wards (2023-)_20241015.geojson</family>
+              <local-type>datetime</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>objectid</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[objectid]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>objectid</remote-alias>
+              <ordinal>4</ordinal>
+              <family>Boundaries - Wards (2023-)_20241015.geojson</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>50</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>globalid</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[globalid]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>globalid</remote-alias>
+              <ordinal>5</ordinal>
+              <family>Boundaries - Wards (2023-)_20241015.geojson</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>50</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>ward</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[ward]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>ward</remote-alias>
+              <ordinal>6</ordinal>
+              <family>Boundaries - Wards (2023-)_20241015.geojson</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>50</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Geometry</remote-name>
+              <remote-type>128</remote-type>
+              <local-name>[Geometry]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Geometry</remote-alias>
+              <ordinal>7</ordinal>
+              <family>Boundaries - Wards (2023-)_20241015.geojson</family>
+              <local-type>spatial</local-type>
+              <aggregation>Collect</aggregation>
+              <approx-count>50</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='Boundaries - Wards (2023-)_20241015.geojson' id='Boundaries - Wards (2023-)_20241015.geojson_3462DA380200404C973D5E9B49986F4E'>
+            <properties context=''>
+              <relation connection='ogrdirect.0ikvbo81nzg4zd1cau86y0745a9e' name='Boundaries - Wards (2023-)_20241015.geojson' table='[Boundaries - Wards (2023-)_20241015.geojson]' type='table'>
+                <columns>
+                  <column datatype='string' name='ward_id' ordinal='0' />
+                  <column datatype='string' name='st_area_sh' ordinal='1' />
+                  <column datatype='string' name='st_length_' ordinal='2' />
+                  <column datatype='datetime' name='edit_date' ordinal='3' />
+                  <column datatype='string' name='objectid' ordinal='4' />
+                  <column datatype='string' name='globalid' ordinal='5' />
+                  <column datatype='string' name='ward' ordinal='6' />
+                  <column datatype='spatial' name='Geometry' ordinal='7' />
+                </columns>
               </relation>
             </properties>
             <properties context='extract'>
@@ -4276,8 +4455,8 @@
             </zone>
           </zone>
         </zone>
-        <zone fixed-size='160' h='13467' id='6' is-fixed='true' param='vert' type-v2='layout-flow' w='17500' x='82400' y='6133'>
-          <zone forceUpdate='true' h='1933' id='93' type-v2='text' w='16500' x='82900' y='6466'>
+        <zone fixed-size='160' h='13467' hidden-by-user='true' id='6' is-fixed='true' param='vert' type-v2='layout-flow' w='17500' x='82400' y='6133'>
+          <zone forceUpdate='true' h='1933' hidden-by-user='true' id='93' type-v2='text' w='16500' x='82900' y='6466'>
             <formatted-text>
               <run fontalignment='1' fontcolor='#ffffff' fontname='Tableau Medium' fontsize='11'>FILTER</run>
             </formatted-text>
@@ -4288,7 +4467,7 @@
               <format attr='margin' value='4' />
             </zone-style>
           </zone>
-          <zone h='3466' id='66' mode='compact' param='[Parameters].[Parameter 1]' type-v2='paramctrl' w='16500' x='82900' y='8399'>
+          <zone h='3466' hidden-by-user='true' id='66' mode='compact' param='[Parameters].[Parameter 1]' type-v2='paramctrl' w='16500' x='82900' y='8399'>
             <zone-style>
               <format attr='border-color' value='#000000' />
               <format attr='border-style' value='none' />
@@ -4296,7 +4475,7 @@
               <format attr='margin' value='4' />
             </zone-style>
           </zone>
-          <zone custom-title='true' h='3466' id='67' mode='compact' param='[Parameters].[Parameter 4]' type-v2='paramctrl' w='16500' x='82900' y='11865'>
+          <zone custom-title='true' h='3466' hidden-by-user='true' id='67' mode='compact' param='[Parameters].[Parameter 4]' type-v2='paramctrl' w='16500' x='82900' y='11865'>
             <formatted-text>
               <run>Select Map</run>
             </formatted-text>
@@ -4307,7 +4486,7 @@
               <format attr='margin' value='4' />
             </zone-style>
           </zone>
-          <zone fixed-size='51' h='3933' id='50' is-fixed='true' mode='checkdropdown' name='KPI Crash Dynamic' param='[federated.14y6cxz0pbabfy19iy9z70elmyz3].[Action (Neighborhood)]' type-v2='filter' w='16500' x='82900' y='15331'>
+          <zone fixed-size='51' h='3933' hidden-by-user='true' id='50' is-fixed='true' mode='checkdropdown' name='KPI Crash Dynamic' param='[federated.14y6cxz0pbabfy19iy9z70elmyz3].[Action (Neighborhood)]' type-v2='filter' w='16500' x='82900' y='15331'>
             <zone-style>
               <format attr='border-color' value='#000000' />
               <format attr='border-style' value='none' />
@@ -4324,7 +4503,7 @@
           </zone-style>
         </zone>
         <zone h='1733' id='102' type-v2='dashboard-object' w='2400' x='96200' y='1200'>
-          <button action=''>
+          <button action='' active-visual-state-index='1'>
             <toggle-action>tabdoc:toggle-button-click-action window-id=&quot;{688D59A0-4E94-4083-A2B5-F74F97120CB1}&quot; zone-id=&quot;102&quot; zone-ids=[6]</toggle-action>
             <button-visual-state />
             <button-visual-state />
@@ -4335,8 +4514,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='2200' minheight='2200' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='110' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98934' id='109' param='vert' type-v2='layout-flow' w='98400' x='800' y='533'>
+            <zone h='100000' id='114' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98934' id='113' param='vert' type-v2='layout-flow' w='98400' x='800' y='533'>
                 <zone fixed-size='674' forceUpdate='true' h='3533' id='15' type-v2='text' w='99800' x='100' y='67'>
                   <formatted-text>
                     <run fontcolor='#000000' fontname='Tableau Bold' fontsize='24'>Chicago Traffic Crash Insights  |</run>
@@ -4383,7 +4562,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='51' h='3933' id='50' mode='checkdropdown' name='KPI Crash Dynamic' param='[federated.14y6cxz0pbabfy19iy9z70elmyz3].[Action (Neighborhood)]' type-v2='filter' w='16500' x='82900' y='15331'>
+                <zone fixed-size='51' h='3933' hidden-by-user='true' id='50' mode='checkdropdown' name='KPI Crash Dynamic' param='[federated.14y6cxz0pbabfy19iy9z70elmyz3].[Action (Neighborhood)]' type-v2='filter' w='16500' x='82900' y='15331'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -4402,7 +4581,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone forceUpdate='true' h='1933' id='93' type-v2='text' w='16500' x='82900' y='6466'>
+                <zone forceUpdate='true' h='1933' hidden-by-user='true' id='93' type-v2='text' w='16500' x='82900' y='6466'>
                   <formatted-text>
                     <run fontalignment='1' fontcolor='#ffffff' fontname='Tableau Medium' fontsize='11'>FILTER</run>
                   </formatted-text>
@@ -4414,7 +4593,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone h='3466' id='66' mode='compact' param='[Parameters].[Parameter 1]' type-v2='paramctrl' w='16500' x='82900' y='8399'>
+                <zone h='3466' hidden-by-user='true' id='66' mode='compact' param='[Parameters].[Parameter 1]' type-v2='paramctrl' w='16500' x='82900' y='8399'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -4423,7 +4602,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone custom-title='true' h='3466' id='67' mode='compact' param='[Parameters].[Parameter 4]' type-v2='paramctrl' w='16500' x='82900' y='11865'>
+                <zone custom-title='true' h='3466' hidden-by-user='true' id='67' mode='compact' param='[Parameters].[Parameter 4]' type-v2='paramctrl' w='16500' x='82900' y='11865'>
                   <formatted-text>
                     <run>Select Map</run>
                   </formatted-text>
