@@ -15,3 +15,21 @@ Data Engineering project that orchestrates weekly ETL pipelines with Airflow to 
 
 ## Data Model
 ![](images/datamodel.png)
+
+## ETL Flow
+
+### General Overview
+![](images/dag_dependencies.png)
+
+### ETL Details
+- **Crash Data Ingestion** : Traffic crash data, along with associated people and vehicle data, is fetched from the Chicago Data Portal using the SODA API. The data is converted to *Parquet* format and stored in Google Cloud Storage (GCS).
+![](images/crash_to_gcs.png)
+
+- **Geospatial Data** : Geospatial data for Chicago neighborhoods and wards is also fetched from Chicago Data Portal using the SODA API and stored in GCS.
+![](images/geo_to_gcs.png)
+
+- **Loading Crash Data to Big Query** : Crash data is loaded from GCS to BigQuery, where a parition date column (signifying the load date) is added and the data appended to BQ tables.
+![](images/crash_to_gcp.png)
+
+- **Geospatial Data Processing and Loading** : Geospatial data is processed by converting it from GeoJson to newline-delimited GeoJson format, making it suitable for upload to BigQuery. A partition date column is added, and the data appended to BQ tables.
+![](images/geo_to_gcp.png)
