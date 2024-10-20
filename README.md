@@ -26,6 +26,8 @@ This approach offers several advantages:
 
 When the data is loaded into BigQuery, a **partition date column** is added, corresponding to the ETL run date. This partitioned data is then appended to the relevant raw tables in BigQuery. Thus, BigQuery stores a comprehensive set of raw data snapshots, each distinguished by its partition date.
 
+![](images/bq_tables.png)
+
 For downstream transformations using dbt, only the **latest partition date** is selected. This ensures that all analytics models, marts, and dashboards are built off the **most recent full snapshot of the data**, providing up-to-date insights while preserving previous states for auditability.
 
 ## ETL Flow
