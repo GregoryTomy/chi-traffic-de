@@ -4,6 +4,9 @@ Data Engineering project that orchestrates weekly ETL pipelines with Airflow to 
 
 [View Tableau Dashboard](https://public.tableau.com/shared/5BNTZ4Q3G?:display_count=n&:origin=viz_share_link)
 
+### Dashboard Demo
+![](images/dashboard_demo.gif)
+
 ## Table of Contents
 - [Key Components](#key-components)
 - [Architecture](#architecture)
