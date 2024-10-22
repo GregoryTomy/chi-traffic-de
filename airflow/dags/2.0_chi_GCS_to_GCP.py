@@ -10,6 +10,8 @@ from airflow.providers.google.cloud.transfers.gcs_to_bigquery import (
 )
 from airflow.providers.google.cloud.operators.bigquery import BigQueryInsertJobOperator
 from airflow.operators.dummy import DummyOperator
+from airflow.operators.trigger_dagrun import TriggerDagRunOperator
+
 
 from google.cloud import storage
 
@@ -82,3 +84,10 @@ with DAG(
             >> add_partition_date_column
             >> update_partition_date
         )
+
+    trigger_dbt_dag = TriggerDagRunOperator(
+        task_id="trigger_dbt_docker",
+        trigger_dag_id="3.0_dbt_transformations",
+    )
+
+    [update_partition_date for datset_name in TABLES] >> trigger_dbt_dag

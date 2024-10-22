@@ -230,6 +230,20 @@ services:
       - -c
       - airflow
 
+  docker-proxy:
+    build:
+      context: ../docker
+      dockerfile: socat.Dockerfile
+    image: docker-socat:v1
+    command: "TCP4-LISTEN:2375,fork,reuseaddr UNIX-CONNECT:/var/run/docker.sock"
+    ports:
+      - "2376:2375"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${DBT_PROJ_DIR}:/usr/app
+      - ${DBT_CONFIG_PATH}:/root/.dbt/
+      - ${DBT_GCP_KEY}:/root/.google/credentials/dbt_gcp_sa_key.json
+
 
 volumes:
   postgres-db-volume:
