@@ -11,13 +11,13 @@ sources:
           - name: crash_record_id
             tests:
               - not_null
-              - unique
+              - unique_id_partition
       - name: people
         columns:
           - name: person_id
             tests:
               - not_null
-              - unique
+              - unique_id_partition
           - name: crash_record_id
             tests:
               - not_null
@@ -35,7 +35,7 @@ sources:
           - name: crash_unit_id
             tests:
               - not_null
-              - unique
+              - unique_id_partition
           - name: crash_record_id
             tests:
               - not_null
@@ -45,7 +45,7 @@ sources:
           - name: ward_id
             tests:
               - not_null
-              - unique
+              - unique_id_partition
           - name: geometry
             tests:
               - not_null
@@ -55,7 +55,7 @@ sources:
           - name: pri_neigh
             tests:
               - not_null
-              - unique
+              - unique_id_partition
           - name: geometry
             tests:
               - not_null
