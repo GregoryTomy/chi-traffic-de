@@ -41,6 +41,42 @@ resource "google_bigquery_dataset" "chi-traffic-dataset" {
 }
 
 ####################################################################################
+# Google Cloud Composer
+####################################################################################
+# Create a Google Cloud service account
+resource "google_service_account" "composer_service_account" {
+    account_id="composer-service-account"
+    display_name = "Google Cloud Composer service account"
+}
+
+# Assign IAM role to the service account
+resource "google_project_iam_member" "composer_sa_roles" {
+    project = var.project_name
+    member = "serviceAccount:${google_service_account.composer_service_account.email}"
+    role = "roles/composer.worker"
+}
+
+# Assign role to the cloud composer service agennt
+resource "google_service_account_iam_member" "composer_sa_roles" {
+    service_account_id = google_service_account.composer_service_account.name
+    role = "roles/composer.ServiceAgentV2Ext"
+    member = "serviceAccount:service-${var.project_number}@cloudcomposer-accounts.iam.gserviceaccount.com"
+}
+
+# Provision a Cloud Composer environement
+resource "google_composer_environment" "composer_environment" {
+    name = "chi-composer-environment"
+    config {
+      software_config {
+        image_version = "composer-2.9.7-airflow-2.9.3"
+      }
+      node_config {
+        service_account = google_service_account.composer_service_account.email
+      }
+    }
+}
+
+####################################################################################
 # Google service accounts
 ####################################################################################
 

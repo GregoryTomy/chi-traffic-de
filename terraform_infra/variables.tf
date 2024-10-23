@@ -9,6 +9,10 @@ variable "project_name" {
   default     = "sf-traffic-de"
 }
 
+variable "project_number" {
+  description = "Project number"
+  default     = 254299319808
+}
 variable "gcs_bucket_location" {
   description = "Project location"
   default     = "US"
