@@ -55,6 +55,9 @@ For downstream transformations using dbt, only the **latest partition date** is 
 - **Loading Crash Data to Big Query** : Crash data is loaded from GCS to BigQuery, where a parition date column (signifying the load date) is added and the data appended to BQ tables.
 ![](images/crash_to_gcp.png)
 
+- **DBT Transformations** : DBT transformations are executed by spinning up a Docker container that contains the dbt project. The transformations are triggered using the DockerOperator within Apache Airflow, enabling seamless integration with the rest of the pipeline while maintaining visibility over the execution process.
+
+
 - **Geospatial Data Processing and Loading** : Geospatial data is processed by converting it from GeoJson to newline-delimited GeoJson format, making it suitable for upload to BigQuery. A partition date column is added, and the data appended to BQ tables.
 ![](images/geo_to_gcp.png)
 
