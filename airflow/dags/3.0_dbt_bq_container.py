@@ -49,7 +49,7 @@ with DAG(
 
     print_end_task = BashOperator(
         task_id="echo_end_task",
-        bash_command='echo "DBT runs finished successfully',
+        bash_command='echo "DBT runs finished successfully"',
     )
 
     print_date >> run_dbt_docker >> print_end_task

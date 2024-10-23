@@ -4,7 +4,7 @@
     with
         validation_cols as (
             select {{ column_name }} as record_id, partition_date from {{ model }}
-        )
+        ),
 
         validation_errors as (
             select *, count(*) as record_count
