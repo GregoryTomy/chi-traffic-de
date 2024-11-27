@@ -4,6 +4,8 @@ Data Engineering project that orchestrates weekly ETL pipelines with Airflow to 
 
 [View Tableau Dashboard](https://public.tableau.com/shared/5BNTZ4Q3G?:display_count=n&:origin=viz_share_link)
 
+> **This project has also been fully migrated to Google Cloud Platform, with the complete implementation available [here](https://github.com/GregoryTomy/chi-traffic-gcp).**
+
 ### Dashboard Demo
 ![](images/dashboard_demo.gif)
 
